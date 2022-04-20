@@ -24,7 +24,7 @@ export const get = async (req, res) => {
 export const add = async (req, res) => {
   const { key, actual_name, symbol, versions } = req.body;
   try {
-    if (!actual_name | !key) {
+    if (!key | !actual_name | (versions & !Array.isArray(versions))) {
       return res.status(422).json({
         status: "missing fields",
         error_message: '"key" & "actual_name" fields are required.',
