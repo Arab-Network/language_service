@@ -10,7 +10,7 @@ import LoggerService from "./logger/LoggerService.js";
 import informationRoutes from "./routes/information.js";
 import translationRoutes from "./routes/translation.js";
 
-const { NODE_LOCAL_PORT: port } = process.env;
+const { NODE_LOCAL_PORT: port, NODE_ENV } = process.env;
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
@@ -19,6 +19,7 @@ app.use(compression());
 app.use(
   cors({
     origin: [
+      NODE_ENV === "development" && "http://localhost:3000",
       "https://abcdarab.com",
       "https://arabgatewallet.com",
       "https://arabnetwork.org",

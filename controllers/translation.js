@@ -1,5 +1,7 @@
 import LanguagesTranslations from "../models/language_translation.js";
 import LanguageInformation from "../models/language_information.js";
+import requestTranslate from "../services/translate/requestTranslate.js";
+import languages from "../services/translate/languages.js";
 
 export const getAllTranslations = async (req, res) => {
   try {
@@ -50,10 +52,10 @@ export const addNewVersion = async (req, res) => {
   const { key } = req.params;
   const { version, data } = req.body;
   try {
-    if (!version | !data) {
+    if (!data) {
       return res.status(422).json({
         status: "missing fields",
-        error_message: '"version" & "data" fields are required.',
+        error_message: '"data" field is required.',
       });
     }
 
@@ -66,19 +68,14 @@ export const addNewVersion = async (req, res) => {
       });
     }
 
-    const docVersionExists = await LanguagesTranslations.findOne({
-      key,
-      version,
-    });
-    if (docInformation.versions.includes(version) | docVersionExists) {
-      return res.status(422).json({
-        status: "existing version",
-        error_message:
-          "The provided version for this language already exists in one of the collections.",
-      });
-    }
+    const newVersion =
+      version | (Math.max(0, ...docInformation.versions) + 0.1);
 
-    const doc = await LanguagesTranslations.create({ key, version, data });
+    const doc = await LanguagesTranslations.create({
+      key,
+      version: newVersion,
+      data,
+    });
     const updateLanguageInformation =
       await LanguageInformation.findOneAndUpdate(
         {
@@ -86,7 +83,7 @@ export const addNewVersion = async (req, res) => {
         },
         {
           $addToSet: {
-            versions: version,
+            versions: newVersion,
           },
         },
         {
@@ -94,6 +91,59 @@ export const addNewVersion = async (req, res) => {
         }
       );
     return res.status(201).json({ updateLanguageInformation, doc });
+  } catch (e) {
+    return res.status(500).json({ status: "error", error_message: e.message });
+  }
+};
+
+export const generateNewVersion = async (req, res) => {
+  const { key } = req.params;
+  const { data } = req.body;
+  try {
+    if (!languages.includes(key)) {
+      return res.status(422).json({
+        status: "bad param",
+        error_message: "The requested language key is invalid.",
+      });
+    }
+    const translation = await requestTranslate(key, data);
+
+    let informationDoc = await LanguageInformation.findOne({ key });
+    if (!informationDoc) {
+      informationDoc = await LanguageInformation.create({
+        key,
+      });
+    }
+
+    const newVersion =
+      version | (Math.max(0, ...informationDoc.versions) + 0.1);
+
+    const translationDoc = await LanguagesTranslations.create({
+      key,
+      version: newVersion,
+      is_auto_generated: true,
+      data: translation,
+    });
+
+    const updateLanguageInformation =
+      await LanguageInformation.findOneAndUpdate(
+        {
+          key,
+        },
+        {
+          $addToSet: {
+            versions: newVersion,
+          },
+        },
+        {
+          new: true,
+        }
+      );
+
+    return res.status(201).json({
+      language_information: updateLanguageInformation,
+      data: translationDoc,
+    });
   } catch (e) {
     return res.status(500).json({ status: "error", error_message: e.message });
   }

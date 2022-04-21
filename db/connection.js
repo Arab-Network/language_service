@@ -62,7 +62,7 @@ if (!mongoConnectionUri.username) {
 if (process.env.TD_MONGODB_URI) CONNECTION_URI = process.env.TD_MONGODB_URI;
 
 var options = {
-  keepAlive: 1,
+  keepAlive: true,
   connectTimeoutMS: 30000,
   useNewUrlParser: true,
 };

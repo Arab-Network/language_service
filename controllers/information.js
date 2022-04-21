@@ -30,9 +30,9 @@ export const add = async (req, res) => {
         error_message: '"key" & "actual_name" fields are required.',
       });
     }
-    const doc = await TranslationModel.create({
-      actual_name,
+    const doc = await LanguageInformation.create({
       key,
+      actual_name,
       symbol,
       versions,
     });
@@ -45,7 +45,7 @@ export const add = async (req, res) => {
 export const update = async (req, res) => {
   const { key } = req.params;
   try {
-    const doc = await TranslationModel.findOneAndUpdate(
+    const doc = await LanguageInformation.findOneAndUpdate(
       { key },
       {
         $set: req.body,
@@ -64,7 +64,7 @@ export const update = async (req, res) => {
 export const deleteOne = async (req, res) => {
   const { key } = req.params;
   try {
-    const doc = await TranslationModel.deleteOne({ key });
+    const doc = await LanguageInformation.deleteOne({ key });
     if (doc.deletedCount !== 1) {
       return res.status(400).json({ status: "not found" });
     }
