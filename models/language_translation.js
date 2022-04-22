@@ -31,7 +31,6 @@ const LanguageTranslation = new Schema(
     },
   },
   {
-    _id: false,
     versionKey: false,
     timestamps: true,
   }

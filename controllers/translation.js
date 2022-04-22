@@ -26,11 +26,17 @@ export const getAll = async (req, res) => {
 
 export const getLatest = async (req, res) => {
   const { key } = req.params;
+  const { parsed } = req.query;
   try {
     const doc = await LanguagesTranslations.findOne({ key }).sort({
       createdAt: -1,
     });
     if (!doc) return res.status(400).json({ status: "not found" });
+
+    if (parsed == "true") {
+      return res.status(200).json(doc.data);
+    }
+
     return res.status(200).json(doc);
   } catch (e) {
     return res.status(500).json({ status: "error", error_message: e.message });
@@ -39,9 +45,15 @@ export const getLatest = async (req, res) => {
 
 export const getByVersion = async (req, res) => {
   const { key, version } = req.params;
+  const { parsed } = req.query;
   try {
     const doc = await LanguagesTranslations.findOne({ key, version });
     if (!doc) return res.status(400).json({ status: "not found" });
+
+    if (parsed == "true") {
+      return res.status(200).json(doc.data);
+    }
+
     return res.status(200).json(doc);
   } catch (e) {
     return res.status(500).json({ status: "error", error_message: e.message });
@@ -68,8 +80,9 @@ export const addNewVersion = async (req, res) => {
       });
     }
 
-    const newVersion =
-      version | (Math.max(0, ...docInformation.versions) + 0.1);
+    const newVersion = !version
+      ? Math.max(0, ...docInformation.versions) + 0.1
+      : version;
 
     const doc = await LanguagesTranslations.create({
       key,
@@ -90,7 +103,10 @@ export const addNewVersion = async (req, res) => {
           new: true,
         }
       );
-    return res.status(201).json({ updateLanguageInformation, doc });
+    return res.status(201).json({
+      language_information: updateLanguageInformation,
+      language_translation: doc,
+    });
   } catch (e) {
     return res.status(500).json({ status: "error", error_message: e.message });
   }
@@ -98,7 +114,7 @@ export const addNewVersion = async (req, res) => {
 
 export const generateNewVersion = async (req, res) => {
   const { key } = req.params;
-  const { data } = req.body;
+  const { version } = req.body;
   try {
     if (!languages.includes(key)) {
       return res.status(422).json({
@@ -106,7 +122,14 @@ export const generateNewVersion = async (req, res) => {
         error_message: "The requested language key is invalid.",
       });
     }
-    const translation = await requestTranslate(key, data);
+
+    const englishTranslation = await LanguagesTranslations.findOne({
+      key: "en",
+    }).sort({
+      createdAt: -1,
+    });
+    console.log(englishTranslation);
+    const translation = await requestTranslate(key, englishTranslation.data);
 
     let informationDoc = await LanguageInformation.findOne({ key });
     if (!informationDoc) {
@@ -115,8 +138,9 @@ export const generateNewVersion = async (req, res) => {
       });
     }
 
-    const newVersion =
-      version | (Math.max(0, ...informationDoc.versions) + 0.1);
+    const newVersion = !version
+      ? Math.max(0, ...informationDoc.versions) + 0.1
+      : version;
 
     const translationDoc = await LanguagesTranslations.create({
       key,
@@ -142,7 +166,7 @@ export const generateNewVersion = async (req, res) => {
 
     return res.status(201).json({
       language_information: updateLanguageInformation,
-      data: translationDoc,
+      language_translation: translationDoc,
     });
   } catch (e) {
     return res.status(500).json({ status: "error", error_message: e.message });

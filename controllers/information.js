@@ -61,6 +61,26 @@ export const update = async (req, res) => {
   }
 };
 
+export const addVersion = async (req, res) => {
+  const { key } = req.params;
+  const { versions } = req.body;
+  try {
+    const doc = await LanguageInformation.findOneAndUpdate(
+      { key },
+      {
+        $addToSet: { versions },
+      },
+      {
+        new: true,
+      }
+    );
+    if (!doc) return res.status(400).json({ status: "not found" });
+    return res.status(200).json(doc);
+  } catch (e) {
+    return res.status(500).json({ status: "error", error_message: e.message });
+  }
+};
+
 export const deleteOne = async (req, res) => {
   const { key } = req.params;
   try {

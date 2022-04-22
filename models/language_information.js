@@ -24,7 +24,6 @@ const LanguageInformation = new Schema(
     },
   },
   {
-    _id: false,
     versionKey: false,
     timestamps: true,
   }
