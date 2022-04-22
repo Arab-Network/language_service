@@ -1,0 +1,1562 @@
+{
+	"info": {
+		"_postman_id": "3f9c12cb-9345-476e-ad95-974e36919187",
+		"name": "Language Service API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Languages Information",
+			"item": [
+				{
+					"name": "Get all languages information",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/information/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"information",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all languages",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/information/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"information",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "366"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"16e-2SPTYmKTw94vN38jExwa9d/KHm4\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Apr 2022 23:03:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"6261e20b95a7aa721756ff60\",\n        \"key\": \"en\",\n        \"actual_name\": \"english\",\n        \"symbol\": \"🇬🇧\",\n        \"versions\": [\n            0\n        ],\n        \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n        \"updatedAt\": \"2022-04-21T23:00:27.337Z\"\n    },\n    {\n        \"_id\": \"6261e2a895a7aa721756ff64\",\n        \"key\": \"ar\",\n        \"actual_name\": \"arabic\",\n        \"symbol\": \"🇸🇦\",\n        \"versions\": [\n            0\n        ],\n        \"createdAt\": \"2022-04-21T23:03:04.092Z\",\n        \"updatedAt\": \"2022-04-21T23:03:04.092Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get a specific language",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/information/:key",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"information",
+								":key"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a specific language by key",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/information/:key",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"information",
+										":key"
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "en"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "182"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b6-GiQTdGdJF9RieGkDhq3P8CHmk30\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Apr 2022 23:07:55 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6261e20b95a7aa721756ff60\",\n    \"key\": \"en\",\n    \"actual_name\": \"english\",\n    \"symbol\": \"🇬🇧\",\n    \"versions\": [\n        0\n    ],\n    \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n    \"updatedAt\": \"2022-04-21T23:00:27.337Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add a new language information",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/information/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"information",
+								"add"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add a new language",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"key\": \"en\",\r\n    \"actual_name\": \"english\",\r\n    \"symbol\": \"en\",\r\n    \"versions\": [0]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/information/add",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"information",
+										"add"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "182"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b6-Vq1OsSLgWmThWiTa8hR+74ugie8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Apr 2022 23:00:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"key\": \"en\",\n    \"actual_name\": \"english\",\n    \"symbol\": \"🇬🇧\",\n    \"versions\": [\n        0\n    ],\n    \"_id\": \"6261e20b95a7aa721756ff60\",\n    \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n    \"updatedAt\": \"2022-04-21T23:00:27.337Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit a specific language",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/information/:key/edit",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"information",
+								":key",
+								"edit"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Edit a specific language",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"symbol\": \"🇺🇸\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/information/:key/edit",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"information",
+										":key",
+										"edit"
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "en"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "182"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b6-VChTFxPtMccifrv2SEwN34SiYxo\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Apr 2022 23:14:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6261e20b95a7aa721756ff60\",\n    \"key\": \"en\",\n    \"actual_name\": \"english\",\n    \"symbol\": \"🇺🇸\",\n    \"versions\": [\n        0\n    ],\n    \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n    \"updatedAt\": \"2022-04-21T23:14:45.239Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add unique versions to a language",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/information/:key/add_versions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"information",
+								":key",
+								"add_versions"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add a unique version to a language",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"versions\": [1, 2, 3]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/information/:key/add_versions",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"information",
+										":key",
+										"add_versions"
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "en"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "188"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bc-Pp/U639SbDHqQFc4OI+Zbcwp3Ow\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Apr 2022 23:16:48 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6261e20b95a7aa721756ff60\",\n    \"key\": \"en\",\n    \"actual_name\": \"english\",\n    \"symbol\": \"🇺🇸\",\n    \"versions\": [\n        0,\n        1,\n        2,\n        3\n    ],\n    \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n    \"updatedAt\": \"2022-04-21T23:16:48.834Z\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a specific language",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/information/:key/delete",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"information",
+								":key",
+								"delete"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete a specific language",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/information/:key/delete",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"information",
+										":key",
+										"delete"
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "ar"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-sVfJQj54VHOAwj+hmq8RTMGcte8\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Apr 2022 23:18:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"deleted\": true\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Languages Translations",
+			"item": [
+				{
+					"name": "Get all translations",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/translation/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"translation",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all translations",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f49-kIxqeVB/YzdpPv9zf7T1bRAkP8g\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Apr 2022 00:00:01 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"6261e91e61d4703ca99e5284\",\n        \"key\": \"en\",\n        \"version\": 7,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:30:38.704Z\",\n        \"updatedAt\": \"2022-04-21T23:30:38.704Z\"\n    },\n    {\n        \"_id\": \"6261e98f7ee40a1d16eadb86\",\n        \"key\": \"en\",\n        \"version\": 6,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:32:31.270Z\",\n        \"updatedAt\": \"2022-04-21T23:32:31.270Z\"\n    },\n    {\n        \"_id\": \"6261e9947ee40a1d16eadb8a\",\n        \"key\": \"en\",\n        \"version\": 5,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:32:36.067Z\",\n        \"updatedAt\": \"2022-04-21T23:32:36.067Z\"\n    },\n    {\n        \"_id\": \"6261e9977ee40a1d16eadb8e\",\n        \"key\": \"en\",\n        \"version\": 5,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:32:39.328Z\",\n        \"updatedAt\": \"2022-04-21T23:32:39.328Z\"\n    },\n    {\n        \"_id\": \"6261e9db1816caa705522f8c\",\n        \"key\": \"en\",\n        \"version\": 5,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:33:47.023Z\",\n        \"updatedAt\": \"2022-04-21T23:33:47.023Z\"\n    },\n    {\n        \"_id\": \"6261e9ef1f98aa3acb6e5907\",\n        \"key\": \"en\",\n        \"version\": 5,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:34:07.900Z\",\n        \"updatedAt\": \"2022-04-21T23:34:07.900Z\"\n    },\n    {\n        \"_id\": \"6261ea2e1f98aa3acb6e590b\",\n        \"key\": \"en\",\n        \"version\": 7.1,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:35:10.657Z\",\n        \"updatedAt\": \"2022-04-21T23:35:10.657Z\"\n    },\n    {\n        \"_id\": \"6261ed74b58a8a0f31a8e740\",\n        \"key\": \"tr\",\n        \"version\": 0.1,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:49:08.008Z\",\n        \"updatedAt\": \"2022-04-21T23:49:08.008Z\"\n    },\n    {\n        \"_id\": \"6261ed982cc0572090845605\",\n        \"key\": \"tr\",\n        \"version\": 0.2,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:49:44.391Z\",\n        \"updatedAt\": \"2022-04-21T23:49:44.391Z\"\n    },\n    {\n        \"_id\": \"6261edd62cc057209084560a\",\n        \"key\": \"tr\",\n        \"version\": 0.30000000000000004,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:50:46.891Z\",\n        \"updatedAt\": \"2022-04-21T23:50:46.891Z\"\n    },\n    {\n        \"_id\": \"6261ee0823dc66936ae38544\",\n        \"key\": \"tr\",\n        \"version\": 0.4,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:51:36.274Z\",\n        \"updatedAt\": \"2022-04-21T23:51:36.274Z\"\n    },\n    {\n        \"_id\": \"6261ee7486286331c0af0378\",\n        \"key\": \"tr\",\n        \"version\": 0.5,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:53:24.179Z\",\n        \"updatedAt\": \"2022-04-21T23:53:24.179Z\"\n    },\n    {\n        \"_id\": \"6261ef2c18d145d2e8e8f4ef\",\n        \"key\": \"tr\",\n        \"version\": 5,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:56:28.077Z\",\n        \"updatedAt\": \"2022-04-21T23:56:28.077Z\"\n    },\n    {\n        \"_id\": \"6261ef4ef2981ef86d996aa3\",\n        \"key\": \"tr\",\n        \"version\": 5,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:57:02.380Z\",\n        \"updatedAt\": \"2022-04-21T23:57:02.380Z\"\n    },\n    {\n        \"_id\": \"6261ef54f2981ef86d996aa8\",\n        \"key\": \"tr\",\n        \"version\": 5.1,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:57:08.837Z\",\n        \"updatedAt\": \"2022-04-21T23:57:08.837Z\"\n    },\n    {\n        \"_id\": \"6261ef67f2981ef86d996aad\",\n        \"key\": \"tr\",\n        \"version\": 6,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:57:27.409Z\",\n        \"updatedAt\": \"2022-04-21T23:57:27.409Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get all translations for a language",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/translation/:key/all",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"translation",
+								":key",
+								"all"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get all translations for a language",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/:key/all",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										":key",
+										"all"
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "tr"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8cc-Qp7AOr9j+ol7h4nDCnDY/kt2CmQ\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Apr 2022 00:00:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"6261ed74b58a8a0f31a8e740\",\n        \"key\": \"tr\",\n        \"version\": 0.1,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:49:08.008Z\",\n        \"updatedAt\": \"2022-04-21T23:49:08.008Z\"\n    },\n    {\n        \"_id\": \"6261ed982cc0572090845605\",\n        \"key\": \"tr\",\n        \"version\": 0.2,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:49:44.391Z\",\n        \"updatedAt\": \"2022-04-21T23:49:44.391Z\"\n    },\n    {\n        \"_id\": \"6261edd62cc057209084560a\",\n        \"key\": \"tr\",\n        \"version\": 0.30000000000000004,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:50:46.891Z\",\n        \"updatedAt\": \"2022-04-21T23:50:46.891Z\"\n    },\n    {\n        \"_id\": \"6261ee0823dc66936ae38544\",\n        \"key\": \"tr\",\n        \"version\": 0.4,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:51:36.274Z\",\n        \"updatedAt\": \"2022-04-21T23:51:36.274Z\"\n    },\n    {\n        \"_id\": \"6261ee7486286331c0af0378\",\n        \"key\": \"tr\",\n        \"version\": 0.5,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:53:24.179Z\",\n        \"updatedAt\": \"2022-04-21T23:53:24.179Z\"\n    },\n    {\n        \"_id\": \"6261ef2c18d145d2e8e8f4ef\",\n        \"key\": \"tr\",\n        \"version\": 5,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:56:28.077Z\",\n        \"updatedAt\": \"2022-04-21T23:56:28.077Z\"\n    },\n    {\n        \"_id\": \"6261ef4ef2981ef86d996aa3\",\n        \"key\": \"tr\",\n        \"version\": 5,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:57:02.380Z\",\n        \"updatedAt\": \"2022-04-21T23:57:02.380Z\"\n    },\n    {\n        \"_id\": \"6261ef54f2981ef86d996aa8\",\n        \"key\": \"tr\",\n        \"version\": 5.1,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:57:08.837Z\",\n        \"updatedAt\": \"2022-04-21T23:57:08.837Z\"\n    },\n    {\n        \"_id\": \"6261ef67f2981ef86d996aad\",\n        \"key\": \"tr\",\n        \"version\": 6,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:57:27.409Z\",\n        \"updatedAt\": \"2022-04-21T23:57:27.409Z\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get the latest translation for a language",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/translation/:key/latest?parsed=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"translation",
+								":key",
+								"latest"
+							],
+							"query": [
+								{
+									"key": "parsed",
+									"value": "",
+									"description": "boolean"
+								}
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Full document",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/:key/latest",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										":key",
+										"latest"
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "tr"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "246"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f6-FwnUTa99MjDjYCld6jerWRz9xWI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Apr 2022 00:00:54 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6261ef67f2981ef86d996aad\",\n    \"key\": \"tr\",\n    \"version\": 6,\n    \"is_auto_generated\": true,\n    \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n    \"createdAt\": \"2022-04-21T23:57:27.409Z\",\n    \"updatedAt\": \"2022-04-21T23:57:27.409Z\"\n}"
+						},
+						{
+							"name": "Parsed data only",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/:key/latest?parsed=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										":key",
+										"latest"
+									],
+									"query": [
+										{
+											"key": "parsed",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "tr"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-Nd8YZz5W1KkelQdltVI7IXwrf/4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Apr 2022 00:04:00 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"hello\": \"merhaba\",\n    \"welcome_message\": \"Uygulamamıza hoş geldiniz!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get a specific translation version",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/translation/:key/version/:version?parsed=",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"translation",
+								":key",
+								"version",
+								":version"
+							],
+							"query": [
+								{
+									"key": "parsed",
+									"value": "",
+									"description": "boolean"
+								}
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": ""
+								},
+								{
+									"key": "version",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get a specific translation version",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/:key/version/:version?parsed=false",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										":key",
+										"version",
+										":version"
+									],
+									"query": [
+										{
+											"key": "parsed",
+											"value": "false",
+											"description": "boolean"
+										}
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "tr"
+										},
+										{
+											"key": "version",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "246"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f6-awl8xuBtL6HwA+MI2ZO2CaP2/Y8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Apr 2022 00:09:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6261ef2c18d145d2e8e8f4ef\",\n    \"key\": \"tr\",\n    \"version\": 5,\n    \"is_auto_generated\": true,\n    \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n    \"createdAt\": \"2022-04-21T23:56:28.077Z\",\n    \"updatedAt\": \"2022-04-21T23:56:28.077Z\"\n}"
+						},
+						{
+							"name": "Parsed data only",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/:key/version/:version?parsed=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										":key",
+										"version",
+										":version"
+									],
+									"query": [
+										{
+											"key": "parsed",
+											"value": "true",
+											"description": "boolean"
+										}
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "tr"
+										},
+										{
+											"key": "version",
+											"value": "5"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "68"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"44-Nd8YZz5W1KkelQdltVI7IXwrf/4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Apr 2022 00:11:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"hello\": \"merhaba\",\n    \"welcome_message\": \"Uygulamamıza hoş geldiniz!\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add a new translation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/translation/:key/add",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"translation",
+								":key",
+								"add"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add a new translation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"version\": 5,\r\n    \"data\": {\r\n        \"hello\": \"hello\",\r\n        \"welcome_message\": \"Welcome to our app!\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/:key/add",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										":key",
+										"add"
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "en"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "479"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1df-IxhP3iXn2/d0/yAsxD3v5GICI7Q\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Apr 2022 23:34:08 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"language_information\": {\n        \"_id\": \"6261e20b95a7aa721756ff60\",\n        \"key\": \"en\",\n        \"actual_name\": \"english\",\n        \"symbol\": \"🇺🇸\",\n        \"versions\": [\n            0,\n            1,\n            2,\n            3,\n            7,\n            6,\n            5\n        ],\n        \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n        \"updatedAt\": \"2022-04-21T23:34:08.001Z\"\n    },\n    \"language_translation\": {\n        \"key\": \"en\",\n        \"version\": 5,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"_id\": \"6261e9ef1f98aa3acb6e5907\",\n        \"createdAt\": \"2022-04-21T23:34:07.900Z\",\n        \"updatedAt\": \"2022-04-21T23:34:07.900Z\"\n    }\n}"
+						},
+						{
+							"name": "With auto versioning",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"data\": {\r\n        \"hello\": \"hello\",\r\n        \"welcome_message\": \"Welcome to our app!\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/:key/add",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										":key",
+										"add"
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "en"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "485"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1e5-7DpozSSaKlpTCboMdv5tr0PBZ4s\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Apr 2022 23:35:10 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"language_information\": {\n        \"_id\": \"6261e20b95a7aa721756ff60\",\n        \"key\": \"en\",\n        \"actual_name\": \"english\",\n        \"symbol\": \"🇺🇸\",\n        \"versions\": [\n            0,\n            1,\n            2,\n            3,\n            7,\n            6,\n            5,\n            7.1\n        ],\n        \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n        \"updatedAt\": \"2022-04-21T23:35:10.753Z\"\n    },\n    \"language_translation\": {\n        \"key\": \"en\",\n        \"version\": 7.1,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"_id\": \"6261ea2e1f98aa3acb6e590b\",\n        \"createdAt\": \"2022-04-21T23:35:10.657Z\",\n        \"updatedAt\": \"2022-04-21T23:35:10.657Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Generate a new translation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/translation/generate_new/:key",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"translation",
+								"generate_new",
+								":key"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Generate a new translation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/generate_new/:key",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										"generate_new",
+										":key"
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "tr"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "441"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1b9-arWIUpnzvYvkeGYvtY7E+mg0l0k\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Apr 2022 23:49:44 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"language_information\": {\n        \"_id\": \"6261ecf6ce5f365a9bbb74a5\",\n        \"key\": \"tr\",\n        \"versions\": [\n            0.1,\n            0.2\n        ],\n        \"createdAt\": \"2022-04-21T23:47:02.946Z\",\n        \"updatedAt\": \"2022-04-21T23:49:44.485Z\"\n    },\n    \"language_translation\": {\n        \"key\": \"tr\",\n        \"version\": 0.2,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"_id\": \"6261ed982cc0572090845605\",\n        \"createdAt\": \"2022-04-21T23:49:44.391Z\",\n        \"updatedAt\": \"2022-04-21T23:49:44.391Z\"\n    }\n}"
+						},
+						{
+							"name": "With a specific version",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"version\": 6\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/generate_new/:key",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										"generate_new",
+										":key"
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "tr"
+										}
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "475"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1db-zeOqKC4VhXuz4DWIg+pHWbQICGs\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 21 Apr 2022 23:57:27 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"language_information\": {\n        \"_id\": \"6261ecf6ce5f365a9bbb74a5\",\n        \"key\": \"tr\",\n        \"versions\": [\n            0.1,\n            0.2,\n            0.30000000000000004,\n            0.4,\n            0.5,\n            5,\n            5.1,\n            6\n        ],\n        \"createdAt\": \"2022-04-21T23:47:02.946Z\",\n        \"updatedAt\": \"2022-04-21T23:57:27.500Z\"\n    },\n    \"language_translation\": {\n        \"key\": \"tr\",\n        \"version\": 6,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"_id\": \"6261ef67f2981ef86d996aad\",\n        \"createdAt\": \"2022-04-21T23:57:27.409Z\",\n        \"updatedAt\": \"2022-04-21T23:57:27.409Z\"\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a specific version",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/translation/:key/version/:version",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"translation",
+								":key",
+								"version",
+								":version"
+							],
+							"variable": [
+								{
+									"key": "key",
+									"value": ""
+								},
+								{
+									"key": "version",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/:key/version/:version",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										":key",
+										"version",
+										":version"
+									],
+									"variable": [
+										{
+											"key": "key",
+											"value": "tr"
+										},
+										{
+											"key": "version",
+											"value": "6"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "16"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10-sVfJQj54VHOAwj+hmq8RTMGcte8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 22 Apr 2022 00:13:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"deleted\": true\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
