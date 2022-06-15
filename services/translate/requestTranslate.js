@@ -1,9 +1,8 @@
-import dotenv from "dotenv";
-dotenv.config();
+import "dotenv/config";
 
 import axios from "axios";
 
-const { google_translate_rapidapi_key } = process.env;
+const { GOOGLE_TRANSLATE_RAPIDAPI_KEY } = process.env;
 
 export default async (
   targetLanguage,
@@ -25,7 +24,7 @@ export default async (
         "content-type": "application/x-www-form-urlencoded",
         "Accept-Encoding": "application/gzip",
         "X-RapidAPI-Host": "google-translate1.p.rapidapi.com",
-        "X-RapidAPI-Key": google_translate_rapidapi_key,
+        "X-RapidAPI-Key": GOOGLE_TRANSLATE_RAPIDAPI_KEY,
       },
       data: encodedParams,
     };

@@ -1,4 +1,4 @@
-import LanguageInformation from "../models/language_information.js";
+import LanguageInformation from "../models/Information.js";
 
 export const getAll = async (req, res) => {
   try {
