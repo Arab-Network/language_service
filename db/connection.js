@@ -1,17 +1,16 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
+import "dotenv/config";
 import LoggerService from "../logger/LoggerService.js";
-dotenv.config();
 
-const { dbserver, dbusername, dbpassword, database } = process.env;
+const { DB_SERVER, DB_USERNAME, DB_PASSWORD, DATABASE } = process.env;
 
 let db = {};
 var mongoConnectionUri = {
-  server: dbserver,
+  server: DB_SERVER,
   port: "27017",
-  username: dbusername,
-  password: dbpassword,
-  database: database,
+  username: DB_USERNAME,
+  password: DB_PASSWORD,
+  database: DATABASE,
   shard: true,
 };
 

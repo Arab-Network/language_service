@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const LanguageInformation = new Schema(
+const InformationSchema = new Schema(
   {
     key: {
       // en
@@ -19,8 +19,8 @@ const LanguageInformation = new Schema(
       unique: true,
     },
     versions: {
-      type: [Number],
-      default: [],
+      type: Number,
+      default: 0,
     },
   },
   {
@@ -29,4 +29,4 @@ const LanguageInformation = new Schema(
   }
 );
 
-export default mongoose.model("LanguagesInformation", LanguageInformation);
+export default mongoose.model("Language_Information", InformationSchema);
