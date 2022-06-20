@@ -4,21 +4,18 @@ import axios from "axios";
 
 const { GOOGLE_TRANSLATE_RAPIDAPI_KEY } = process.env;
 
-export default async (
-  targetLanguage,
-  data,
-  sourceLanguage = "en",
-  url = "https://google-translate1.p.rapidapi.com/language/translate/v2"
-) => {
+export default async (sourceLanguage, targetLanguage, data) => {
   try {
     const encodedParams = new URLSearchParams();
-    encodedParams.append("target", targetLanguage);
     encodedParams.append("source", sourceLanguage);
-    Object.values(data).forEach((value) => encodedParams.append("q", value));
+    encodedParams.append("target", targetLanguage);
+    data.forEach((translationPart) =>
+      encodedParams.append("q", translationPart.value)
+    );
 
     const options = {
       method: "POST",
-      url,
+      url: "https://google-translate1.p.rapidapi.com/language/translate/v2",
       timeout: 10000,
       headers: {
         "content-type": "application/x-www-form-urlencoded",
