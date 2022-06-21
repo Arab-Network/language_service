@@ -10,21 +10,20 @@ const router = Router();
 // claimCheck(({ isAdmin, roles }) => isAdmin || roles.includes('payroll'))
 router.get("/all", TranslationController.getAllTranslations);
 
-router.get("/:language_key/all", TranslationController.getAllByKey);
+router.get("/:language_key/all", TranslationController.getAllByLanguageKey);
 router.get(
-  "/:language_key/latest",
-  TranslationController.getApprovedTranslation
+  "/:language_key/latest_full_translation",
+  TranslationController.getApprovedTranslationsByLanguageKey
 );
-router.get(
-  "/:language_key/version/:version",
-  TranslationController.getByVersion
-);
+router.get("/:language_key/part_version", TranslationController.getByVersion);
 
 router.post("/:language_key/add", TranslationController.addNewTranslation);
 router.post(
-  "/generate_new/:language_key",
+  "/generate_new/:from/to/:to",
   TranslationController.generateNewVersion
 );
+
+router.put("/:language_key/update_status", TranslationController.updateStatus);
 
 router.delete(
   "/:language_key/version/:version",

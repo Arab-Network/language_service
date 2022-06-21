@@ -3,10 +3,13 @@ import LanguageInformation from "../models/Information.js";
 export const getAll = async (req, res) => {
   try {
     const doc = await LanguageInformation.find({});
-    if (doc.length === 0) return res.status(400).json({ status: "not found" });
+    if (doc.length === 0) {
+      return res.status(400).json({ status: "No results were found." });
+    }
+
     return res.status(200).json(doc);
   } catch (e) {
-    return res.status(500).json({ status: "error", error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@108" });
   }
 };
 
@@ -14,31 +17,36 @@ export const get = async (req, res) => {
   const { key } = req.params;
   try {
     const doc = await LanguageInformation.findOne({ key });
-    if (!doc) return res.status(400).json({ status: "not found" });
+    if (!doc) {
+      return res.status(400).json({ status: "not found" });
+    }
+
     return res.status(200).json(doc);
   } catch (e) {
-    return res.status(500).json({ status: "error", error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@109" });
   }
 };
 
 export const add = async (req, res) => {
   const { key, actual_name, symbol, versions } = req.body;
   try {
-    if (!key | !actual_name | (versions & !Array.isArray(versions))) {
+    if (!key | !actual_name | !versions) {
       return res.status(422).json({
         status: "missing fields",
-        error_message: '"key" & "actual_name" fields are required.',
+        error_message: "(key, actual_name, versions) fields are required.",
       });
     }
+
     const doc = await LanguageInformation.create({
       key,
       actual_name,
       symbol,
       versions,
     });
+
     return res.status(201).json(doc);
   } catch (e) {
-    return res.status(500).json({ status: "error", error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@110" });
   }
 };
 
@@ -54,13 +62,18 @@ export const update = async (req, res) => {
         new: true,
       }
     );
-    if (!doc) return res.status(400).json({ status: "not found" });
+
+    if (!doc) {
+      return res.status(400).json({ status: "not found" });
+    }
+
     return res.status(200).json(doc);
   } catch (e) {
-    return res.status(500).json({ status: "error", error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@111" });
   }
 };
 
+// TODO: refactor
 export const addVersion = async (req, res) => {
   const { key } = req.params;
   const { versions } = req.body;
@@ -77,7 +90,7 @@ export const addVersion = async (req, res) => {
     if (!doc) return res.status(400).json({ status: "not found" });
     return res.status(200).json(doc);
   } catch (e) {
-    return res.status(500).json({ status: "error", error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@112" });
   }
 };
 
@@ -85,11 +98,13 @@ export const deleteOne = async (req, res) => {
   const { key } = req.params;
   try {
     const doc = await LanguageInformation.deleteOne({ key });
+
     if (doc.deletedCount !== 1) {
       return res.status(400).json({ status: "not found" });
     }
-    return res.status(200).json({ deleted: true });
+
+    return res.status(200).json({ status: "success" });
   } catch (e) {
-    return res.status(500).json({ status: "error", error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@113" });
   }
 };
