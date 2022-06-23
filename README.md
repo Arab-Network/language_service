@@ -2,22 +2,27 @@
 
 ## How to run
 
+Initialize:
+
 ```bash
 yarn
+```
+
+Run:
+
+```bash
 yarn dev # nodemon
 ```
+
+ or:
 
 ```bash
 yarn start # node
 ```
 
-## Initial Auth0 setup
-
-TODO
-
 ## Deployment notes
 
-TODO
+Apply pre-deployment security checks from the security checklist.
 
 ## indexing table for responses that include "E@***" codes.
 
