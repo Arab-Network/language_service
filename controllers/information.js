@@ -30,11 +30,18 @@ export const get = async (req, res) => {
 export const add = async (req, res) => {
   const { key, actual_name, symbol, versions } = req.body;
   try {
-    if (!key | !actual_name | !versions) {
+    if (!key | !actual_name | !Number.isInteger(versions)) {
       return res.status(422).json({
         status: "missing fields",
         error_message: "(key, actual_name, versions) fields are required.",
       });
+    }
+
+    const oldDoc = await LanguageInformation.findOne({ key });
+    if (oldDoc) {
+      return res
+        .status(400)
+        .json({ status: "This key already exists and cannot be recreated." });
     }
 
     const doc = await LanguageInformation.create({
@@ -73,15 +80,16 @@ export const update = async (req, res) => {
   }
 };
 
-// TODO: refactor
-export const addVersion = async (req, res) => {
+export const addVersions = async (req, res) => {
   const { key } = req.params;
   const { versions } = req.body;
   try {
     const doc = await LanguageInformation.findOneAndUpdate(
       { key },
       {
-        $addToSet: { versions },
+        $inc: {
+          versions: parseInt(versions),
+        },
       },
       {
         new: true,

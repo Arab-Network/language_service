@@ -1,13 +1,9 @@
 import { Router } from "express";
 import * as TranslationController from "../controllers/translation.js";
-import oidc from "express-openid-connect";
-
-// TODO: refactor
-
-const { claimCheck } = oidc;
 
 const router = Router();
-// claimCheck(({ isAdmin, roles }) => isAdmin || roles.includes('payroll'))
+
+// TODO: Strict access by user roles (Admin, Contributor etc.)
 router.get("/all", TranslationController.getAllTranslations);
 
 router.get("/:language_key/all", TranslationController.getAllByLanguageKey);
@@ -25,9 +21,6 @@ router.post(
 
 router.put("/:language_key/update_status", TranslationController.updateStatus);
 
-router.delete(
-  "/:language_key/version/:version",
-  TranslationController.deleteByVersion
-);
+router.delete("/delete/:language_key/", TranslationController.deleteByVersion);
 
 export default router;

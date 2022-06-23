@@ -2,7 +2,7 @@ import "dotenv/config";
 
 import express from "express";
 import oidc from "express-openid-connect";
-const { auth, claimCheck, claimIncludes, claimEquals } = oidc;
+const { auth } = oidc;
 
 import cors from "cors";
 import helmet from "helmet";
@@ -65,21 +65,9 @@ app.use(
 app.use("/api/information", informationRoutes);
 app.use("/api/translation", translationRoutes);
 
-app.get(
-  "/profile",
-  // claimIncludes("Admin"),
-  // claimCheck((req, claims) => {
-  //   claims.isAdmin || claims.roles.includes("Admin");
-  // }),
-  // claimCheck((req, claims) => {
-  //   return claims.isAdmin && claims.roles.includes("Admin");
-  // }),
-  // claimEquals("isAdmin", true),
-  // claimEquals("Admin", true),
-  (req, res) => {
-    return res.status(200).json(req.oidc.user);
-  }
-);
+app.get("/profile", (req, res) => {
+  return res.status(200).json(req.oidc.user);
+});
 
 app.listen(port, () => {
   LoggerService.info(`Server listening on port ${port}`);

@@ -86,7 +86,19 @@ export const getByVersion = async (req, res) => {
   const { language_key } = req.params;
   const { version, key } = req.query;
   try {
-    const doc = await Translation.findOne({ language_key, key, version });
+    const versionNum = Number(version);
+    if (!key | !Number.isInteger(versionNum)) {
+      return res.status(422).json({
+        status: "missing fields",
+        error_message: "(key, version) fields are required.",
+      });
+    }
+
+    const doc = await Translation.findOne({
+      language_key,
+      key,
+      version: versionNum,
+    });
     if (!doc) {
       return res.status(400).json({ status: "no results were found" });
     }
@@ -211,22 +223,21 @@ export const generateNewVersion = async (req, res) => {
       translatedData[translation].submitted_by = req.oidc.user.name;
     }
 
-    const translationDoc = await Translation.insertMany(translatedData);
+    await Translation.insertMany(translatedData);
 
-    const updateLanguageInformation =
-      await LanguageInformation.findOneAndUpdate(
-        {
-          key: to,
+    await LanguageInformation.findOneAndUpdate(
+      {
+        key: to,
+      },
+      {
+        $inc: {
+          versions: translatedData.length,
         },
-        {
-          $inc: {
-            versions: translatedData.length,
-          },
-        },
-        {
-          new: true,
-        }
-      );
+      },
+      {
+        new: true,
+      }
+    );
 
     return res.status(201).json({
       status: "success",
@@ -292,12 +303,22 @@ export const updateStatus = async (req, res) => {
 };
 
 export const deleteByVersion = async (req, res) => {
-  const { language_key, version } = req.params;
+  const { language_key } = req.params;
+  const { key, version } = req.query;
   try {
+    const versionNum = Number(version);
+    if (!key | !Number.isInteger(versionNum)) {
+      return res.status(422).json({
+        status: "missing fields",
+        error_message: "(key, version) fields are required.",
+      });
+    }
+
     const doc = await Translation.findOneAndUpdate(
       {
         language_key,
-        version,
+        key,
+        version: versionNum,
       },
       {
         is_deleted: true,
