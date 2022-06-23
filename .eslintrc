@@ -1,0 +1,17 @@
+{
+    "env": {
+        "node": true
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "sourceType": "module",
+        "ecmaVersion": 8
+    },
+    "rules": {
+        "semi": ["error", "always"],
+        "quotes": ["error", "double"]
+    },
+    "extends": [
+        "plugin:security/recommended"
+      ]
+}

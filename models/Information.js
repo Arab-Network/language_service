@@ -20,7 +20,6 @@ const InformationSchema = new Schema(
     },
     versions: {
       type: Number,
-      default: 0,
     },
   },
   {

@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "3f9c12cb-9345-476e-ad95-974e36919187",
-		"name": "Language Service API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "aeb2e2a6-cf26-4391-bc12-5e5e936dbda7",
+		"name": "Language Service API - V3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20463697"
 	},
 	"item": [
 		{
@@ -27,7 +28,7 @@
 					},
 					"response": [
 						{
-							"name": "Get all languages",
+							"name": "Get all languages information",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -48,12 +49,64 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
@@ -61,15 +114,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "366"
+									"value": "320"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"16e-2SPTYmKTw94vN38jExwa9d/KHm4\""
+									"value": "W/\"140-mBrnPSlvO3ldCXrSbzRdEmO++gw\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 21 Apr 2022 23:03:43 GMT"
+									"value": "Thu, 23 Jun 2022 18:27:36 GMT"
 								},
 								{
 									"key": "Connection",
@@ -81,7 +134,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"_id\": \"6261e20b95a7aa721756ff60\",\n        \"key\": \"en\",\n        \"actual_name\": \"english\",\n        \"symbol\": \"🇬🇧\",\n        \"versions\": [\n            0\n        ],\n        \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n        \"updatedAt\": \"2022-04-21T23:00:27.337Z\"\n    },\n    {\n        \"_id\": \"6261e2a895a7aa721756ff64\",\n        \"key\": \"ar\",\n        \"actual_name\": \"arabic\",\n        \"symbol\": \"🇸🇦\",\n        \"versions\": [\n            0\n        ],\n        \"createdAt\": \"2022-04-21T23:03:04.092Z\",\n        \"updatedAt\": \"2022-04-21T23:03:04.092Z\"\n    }\n]"
+							"body": "[\n    {\n        \"_id\": \"62b0ead5ad28eb3ffc28a7c7\",\n        \"key\": \"en\",\n        \"actual_name\": \"english\",\n        \"symbol\": \"🇬🇧\",\n        \"createdAt\": \"2022-06-20T21:47:01.322Z\",\n        \"updatedAt\": \"2022-06-21T00:06:22.527Z\",\n        \"versions\": 15\n    },\n    {\n        \"_id\": \"62b11037e487caff66ce7952\",\n        \"key\": \"ar\",\n        \"createdAt\": \"2022-06-21T00:26:31.180Z\",\n        \"updatedAt\": \"2022-06-21T00:28:37.148Z\",\n        \"versions\": 2\n    }\n]"
 						}
 					]
 				},
@@ -103,14 +156,14 @@
 							"variable": [
 								{
 									"key": "key",
-									"value": ""
+									"value": "en"
 								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Get a specific language by key",
+							"name": "Get a specific language",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
@@ -137,12 +190,64 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
@@ -150,15 +255,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "182"
+									"value": "181"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"b6-GiQTdGdJF9RieGkDhq3P8CHmk30\""
+									"value": "W/\"b5-Je+xHwMoP26JBe52+X92F8A6gKY\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 21 Apr 2022 23:07:55 GMT"
+									"value": "Thu, 23 Jun 2022 18:28:41 GMT"
 								},
 								{
 									"key": "Connection",
@@ -170,7 +275,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"_id\": \"6261e20b95a7aa721756ff60\",\n    \"key\": \"en\",\n    \"actual_name\": \"english\",\n    \"symbol\": \"🇬🇧\",\n    \"versions\": [\n        0\n    ],\n    \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n    \"updatedAt\": \"2022-04-21T23:00:27.337Z\"\n}"
+							"body": "{\n    \"_id\": \"62b0ead5ad28eb3ffc28a7c7\",\n    \"key\": \"en\",\n    \"actual_name\": \"english\",\n    \"symbol\": \"🇬🇧\",\n    \"createdAt\": \"2022-06-20T21:47:01.322Z\",\n    \"updatedAt\": \"2022-06-21T00:06:22.527Z\",\n    \"versions\": 15\n}"
 						}
 					]
 				},
@@ -179,6 +284,15 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"key\": \"tr\",\r\n    \"actual_name\": \"Turkish\",\r\n    \"versions\": 0,\r\n    \"symbol\": \"🇹🇷\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{baseUrl}}/api/information/add",
 							"host": [
@@ -193,13 +307,13 @@
 					},
 					"response": [
 						{
-							"name": "Add a new language",
+							"name": "Add a new language information",
 							"originalRequest": {
 								"method": "POST",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"key\": \"en\",\r\n    \"actual_name\": \"english\",\r\n    \"symbol\": \"en\",\r\n    \"versions\": [0]\r\n}",
+									"raw": "{\r\n    \"key\": \"tr\",\r\n    \"actual_name\": \"Turkish\",\r\n    \"versions\": 0,\r\n    \"symbol\": \"🇹🇷\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -223,12 +337,64 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
@@ -236,15 +402,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "182"
+									"value": "180"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"b6-Vq1OsSLgWmThWiTa8hR+74ugie8\""
+									"value": "W/\"b4-fvTu+4qVg50+yRKAIo3PrzOAtGY\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 21 Apr 2022 23:00:27 GMT"
+									"value": "Thu, 23 Jun 2022 18:35:49 GMT"
 								},
 								{
 									"key": "Connection",
@@ -256,7 +422,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"key\": \"en\",\n    \"actual_name\": \"english\",\n    \"symbol\": \"🇬🇧\",\n    \"versions\": [\n        0\n    ],\n    \"_id\": \"6261e20b95a7aa721756ff60\",\n    \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n    \"updatedAt\": \"2022-04-21T23:00:27.337Z\"\n}"
+							"body": "{\n    \"key\": \"tr\",\n    \"actual_name\": \"Turkish\",\n    \"symbol\": \"🇹🇷\",\n    \"versions\": 0,\n    \"_id\": \"62b4b285463d7f2d3c424c5c\",\n    \"createdAt\": \"2022-06-23T18:35:49.534Z\",\n    \"updatedAt\": \"2022-06-23T18:35:49.534Z\"\n}"
 						}
 					]
 				},
@@ -265,6 +431,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"actual_name\": \"Türkçe\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{baseUrl}}/api/information/:key/edit",
 							"host": [
@@ -279,7 +454,7 @@
 							"variable": [
 								{
 									"key": "key",
-									"value": ""
+									"value": "tr"
 								}
 							]
 						}
@@ -292,7 +467,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"symbol\": \"🇺🇸\"\r\n}",
+									"raw": "{\r\n    \"actual_name\": \"Türkçe\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -313,7 +488,7 @@
 									"variable": [
 										{
 											"key": "key",
-											"value": "en"
+											"value": "tr"
 										}
 									]
 								}
@@ -323,12 +498,64 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
@@ -336,15 +563,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "182"
+									"value": "181"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"b6-VChTFxPtMccifrv2SEwN34SiYxo\""
+									"value": "W/\"b5-8IA+Ip0ryESJxRhzer7g0fCLdCo\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 21 Apr 2022 23:14:45 GMT"
+									"value": "Thu, 23 Jun 2022 18:36:59 GMT"
 								},
 								{
 									"key": "Connection",
@@ -356,7 +583,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"_id\": \"6261e20b95a7aa721756ff60\",\n    \"key\": \"en\",\n    \"actual_name\": \"english\",\n    \"symbol\": \"🇺🇸\",\n    \"versions\": [\n        0\n    ],\n    \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n    \"updatedAt\": \"2022-04-21T23:14:45.239Z\"\n}"
+							"body": "{\n    \"_id\": \"62b4b285463d7f2d3c424c5c\",\n    \"key\": \"tr\",\n    \"actual_name\": \"Türkçe\",\n    \"symbol\": \"🇹🇷\",\n    \"versions\": 0,\n    \"createdAt\": \"2022-06-23T18:35:49.534Z\",\n    \"updatedAt\": \"2022-06-23T18:36:59.003Z\"\n}"
 						}
 					]
 				},
@@ -365,6 +592,15 @@
 					"request": {
 						"method": "PUT",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"versions\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{baseUrl}}/api/information/:key/add_versions",
 							"host": [
@@ -379,20 +615,20 @@
 							"variable": [
 								{
 									"key": "key",
-									"value": ""
+									"value": "tr"
 								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Add a unique version to a language",
+							"name": "Add unique versions to a language",
 							"originalRequest": {
 								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"versions\": [1, 2, 3]\r\n}",
+									"raw": "{\r\n    \"versions\": 5\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -413,7 +649,7 @@
 									"variable": [
 										{
 											"key": "key",
-											"value": "en"
+											"value": "tr"
 										}
 									]
 								}
@@ -423,12 +659,64 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
@@ -436,15 +724,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "188"
+									"value": "181"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"bc-Pp/U639SbDHqQFc4OI+Zbcwp3Ow\""
+									"value": "W/\"b5-ucMoSW4Ksd+6KMMf8VuCll2miRg\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 21 Apr 2022 23:16:48 GMT"
+									"value": "Thu, 23 Jun 2022 18:39:26 GMT"
 								},
 								{
 									"key": "Connection",
@@ -456,7 +744,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"_id\": \"6261e20b95a7aa721756ff60\",\n    \"key\": \"en\",\n    \"actual_name\": \"english\",\n    \"symbol\": \"🇺🇸\",\n    \"versions\": [\n        0,\n        1,\n        2,\n        3\n    ],\n    \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n    \"updatedAt\": \"2022-04-21T23:16:48.834Z\"\n}"
+							"body": "{\n    \"_id\": \"62b4b285463d7f2d3c424c5c\",\n    \"key\": \"tr\",\n    \"actual_name\": \"Türkçe\",\n    \"symbol\": \"🇹🇷\",\n    \"versions\": 5,\n    \"createdAt\": \"2022-06-23T18:35:49.534Z\",\n    \"updatedAt\": \"2022-06-23T18:39:26.367Z\"\n}"
 						}
 					]
 				},
@@ -479,7 +767,7 @@
 							"variable": [
 								{
 									"key": "key",
-									"value": ""
+									"value": "tr"
 								}
 							]
 						}
@@ -504,7 +792,7 @@
 									"variable": [
 										{
 											"key": "key",
-											"value": "ar"
+											"value": "tr"
 										}
 									]
 								}
@@ -514,12 +802,64 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
@@ -527,15 +867,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "16"
+									"value": "20"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"10-sVfJQj54VHOAwj+hmq8RTMGcte8\""
+									"value": "W/\"14-Y53wuE/mmbSikKcT/WualL1N65U\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 21 Apr 2022 23:18:35 GMT"
+									"value": "Thu, 23 Jun 2022 18:39:48 GMT"
 								},
 								{
 									"key": "Connection",
@@ -547,7 +887,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"deleted\": true\n}"
+							"body": "{\n    \"status\": \"success\"\n}"
 						}
 					]
 				}
@@ -562,7 +902,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/translation/all",
+							"raw": "{{baseUrl}}/api/translation/all?status=Not reviewed&is_deleted=false",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -570,6 +910,18 @@
 								"api",
 								"translation",
 								"all"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "Not reviewed",
+									"description": "Optional - options: Old, Rejected, Not reviewed, Approved"
+								},
+								{
+									"key": "is_deleted",
+									"value": "false",
+									"description": "Optional - boolean"
+								}
 							]
 						}
 					},
@@ -596,12 +948,64 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
@@ -609,7 +1013,7 @@
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"f49-kIxqeVB/YzdpPv9zf7T1bRAkP8g\""
+									"value": "W/\"8e0-W4Tgh3TNNnekxuy3oxCZ0yjBnxI\""
 								},
 								{
 									"key": "Content-Encoding",
@@ -617,7 +1021,7 @@
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 22 Apr 2022 00:00:01 GMT"
+									"value": "Thu, 23 Jun 2022 18:42:48 GMT"
 								},
 								{
 									"key": "Connection",
@@ -633,7 +1037,132 @@
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"_id\": \"6261e91e61d4703ca99e5284\",\n        \"key\": \"en\",\n        \"version\": 7,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:30:38.704Z\",\n        \"updatedAt\": \"2022-04-21T23:30:38.704Z\"\n    },\n    {\n        \"_id\": \"6261e98f7ee40a1d16eadb86\",\n        \"key\": \"en\",\n        \"version\": 6,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:32:31.270Z\",\n        \"updatedAt\": \"2022-04-21T23:32:31.270Z\"\n    },\n    {\n        \"_id\": \"6261e9947ee40a1d16eadb8a\",\n        \"key\": \"en\",\n        \"version\": 5,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:32:36.067Z\",\n        \"updatedAt\": \"2022-04-21T23:32:36.067Z\"\n    },\n    {\n        \"_id\": \"6261e9977ee40a1d16eadb8e\",\n        \"key\": \"en\",\n        \"version\": 5,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:32:39.328Z\",\n        \"updatedAt\": \"2022-04-21T23:32:39.328Z\"\n    },\n    {\n        \"_id\": \"6261e9db1816caa705522f8c\",\n        \"key\": \"en\",\n        \"version\": 5,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:33:47.023Z\",\n        \"updatedAt\": \"2022-04-21T23:33:47.023Z\"\n    },\n    {\n        \"_id\": \"6261e9ef1f98aa3acb6e5907\",\n        \"key\": \"en\",\n        \"version\": 5,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:34:07.900Z\",\n        \"updatedAt\": \"2022-04-21T23:34:07.900Z\"\n    },\n    {\n        \"_id\": \"6261ea2e1f98aa3acb6e590b\",\n        \"key\": \"en\",\n        \"version\": 7.1,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:35:10.657Z\",\n        \"updatedAt\": \"2022-04-21T23:35:10.657Z\"\n    },\n    {\n        \"_id\": \"6261ed74b58a8a0f31a8e740\",\n        \"key\": \"tr\",\n        \"version\": 0.1,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:49:08.008Z\",\n        \"updatedAt\": \"2022-04-21T23:49:08.008Z\"\n    },\n    {\n        \"_id\": \"6261ed982cc0572090845605\",\n        \"key\": \"tr\",\n        \"version\": 0.2,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:49:44.391Z\",\n        \"updatedAt\": \"2022-04-21T23:49:44.391Z\"\n    },\n    {\n        \"_id\": \"6261edd62cc057209084560a\",\n        \"key\": \"tr\",\n        \"version\": 0.30000000000000004,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:50:46.891Z\",\n        \"updatedAt\": \"2022-04-21T23:50:46.891Z\"\n    },\n    {\n        \"_id\": \"6261ee0823dc66936ae38544\",\n        \"key\": \"tr\",\n        \"version\": 0.4,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:51:36.274Z\",\n        \"updatedAt\": \"2022-04-21T23:51:36.274Z\"\n    },\n    {\n        \"_id\": \"6261ee7486286331c0af0378\",\n        \"key\": \"tr\",\n        \"version\": 0.5,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:53:24.179Z\",\n        \"updatedAt\": \"2022-04-21T23:53:24.179Z\"\n    },\n    {\n        \"_id\": \"6261ef2c18d145d2e8e8f4ef\",\n        \"key\": \"tr\",\n        \"version\": 5,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:56:28.077Z\",\n        \"updatedAt\": \"2022-04-21T23:56:28.077Z\"\n    },\n    {\n        \"_id\": \"6261ef4ef2981ef86d996aa3\",\n        \"key\": \"tr\",\n        \"version\": 5,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:57:02.380Z\",\n        \"updatedAt\": \"2022-04-21T23:57:02.380Z\"\n    },\n    {\n        \"_id\": \"6261ef54f2981ef86d996aa8\",\n        \"key\": \"tr\",\n        \"version\": 5.1,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:57:08.837Z\",\n        \"updatedAt\": \"2022-04-21T23:57:08.837Z\"\n    },\n    {\n        \"_id\": \"6261ef67f2981ef86d996aad\",\n        \"key\": \"tr\",\n        \"version\": 6,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:57:27.409Z\",\n        \"updatedAt\": \"2022-04-21T23:57:27.409Z\"\n    }\n]"
+							"body": "[\n    {\n        \"_id\": \"62b10b75fb39edda3024b3e3\",\n        \"language_key\": \"en\",\n        \"key\": \"hello\",\n        \"value\": \"hello\",\n        \"status\": \"Not reviewed\",\n        \"version\": 1,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": false,\n        \"createdAt\": \"2022-06-21T00:06:13.606Z\",\n        \"updatedAt\": \"2022-06-21T00:06:13.606Z\"\n    },\n    {\n        \"_id\": \"62b10b75fb39edda3024b3e4\",\n        \"language_key\": \"en\",\n        \"key\": \"how\",\n        \"value\": \"how\",\n        \"status\": \"Not reviewed\",\n        \"version\": 1,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": false,\n        \"createdAt\": \"2022-06-21T00:06:13.607Z\",\n        \"updatedAt\": \"2022-06-21T00:06:13.607Z\"\n    },\n    {\n        \"_id\": \"62b10b75fb39edda3024b3e5\",\n        \"language_key\": \"en\",\n        \"key\": \"help\",\n        \"value\": \"help\",\n        \"status\": \"Not reviewed\",\n        \"version\": 1,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": false,\n        \"createdAt\": \"2022-06-21T00:06:13.607Z\",\n        \"updatedAt\": \"2022-06-21T00:06:13.607Z\"\n    },\n    {\n        \"_id\": \"62b10b7efb39edda3024b3ec\",\n        \"language_key\": \"en\",\n        \"key\": \"hello\",\n        \"value\": \"hello\",\n        \"status\": \"Approved\",\n        \"version\": 2,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": false,\n        \"createdAt\": \"2022-06-21T00:06:22.442Z\",\n        \"updatedAt\": \"2022-06-21T00:24:24.858Z\",\n        \"approved_by\": \"req.oidc.user.name\"\n    },\n    {\n        \"_id\": \"62b10b7efb39edda3024b3ed\",\n        \"language_key\": \"en\",\n        \"key\": \"how\",\n        \"value\": \"how\",\n        \"status\": \"Not reviewed\",\n        \"version\": 2,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": false,\n        \"createdAt\": \"2022-06-21T00:06:22.442Z\",\n        \"updatedAt\": \"2022-06-21T00:06:22.442Z\"\n    },\n    {\n        \"_id\": \"62b10b7efb39edda3024b3ee\",\n        \"language_key\": \"en\",\n        \"key\": \"help\",\n        \"value\": \"help\",\n        \"status\": \"Not reviewed\",\n        \"version\": 2,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": false,\n        \"createdAt\": \"2022-06-21T00:06:22.443Z\",\n        \"updatedAt\": \"2022-06-21T00:06:22.443Z\"\n    },\n    {\n        \"_id\": \"62b11037e487caff66ce7955\",\n        \"language_key\": \"ar\",\n        \"key\": \"hello\",\n        \"value\": \"أهلا\",\n        \"status\": \"Not reviewed\",\n        \"version\": 1,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": true,\n        \"createdAt\": \"2022-06-21T00:26:31.365Z\",\n        \"updatedAt\": \"2022-06-21T00:26:31.365Z\"\n    },\n    {\n        \"_id\": \"62b110b5e487caff66ce795b\",\n        \"language_key\": \"ar\",\n        \"key\": \"hello\",\n        \"value\": \"أهلا\",\n        \"status\": \"Not reviewed\",\n        \"version\": 2,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": true,\n        \"createdAt\": \"2022-06-21T00:28:37.051Z\",\n        \"updatedAt\": \"2022-06-21T00:28:37.051Z\"\n    }\n]"
+						},
+						{
+							"name": "With Query Params",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/all?status=Not reviewed&is_deleted=false",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										"all"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "Not reviewed",
+											"description": "Optional - options: Old, Rejected, Not reviewed, Approved"
+										},
+										{
+											"key": "is_deleted",
+											"value": "false",
+											"description": "Optional - boolean"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"691-FPcnV5+EZDCs/DoED6QdcCMbWc4\""
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Jun 2022 18:44:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"62b10b75fb39edda3024b3e3\",\n        \"language_key\": \"en\",\n        \"key\": \"hello\",\n        \"value\": \"hello\",\n        \"status\": \"Not reviewed\",\n        \"version\": 1,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": false,\n        \"createdAt\": \"2022-06-21T00:06:13.606Z\",\n        \"updatedAt\": \"2022-06-21T00:06:13.606Z\"\n    },\n    {\n        \"_id\": \"62b10b75fb39edda3024b3e4\",\n        \"language_key\": \"en\",\n        \"key\": \"how\",\n        \"value\": \"how\",\n        \"status\": \"Not reviewed\",\n        \"version\": 1,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": false,\n        \"createdAt\": \"2022-06-21T00:06:13.607Z\",\n        \"updatedAt\": \"2022-06-21T00:06:13.607Z\"\n    },\n    {\n        \"_id\": \"62b10b7efb39edda3024b3ed\",\n        \"language_key\": \"en\",\n        \"key\": \"how\",\n        \"value\": \"how\",\n        \"status\": \"Not reviewed\",\n        \"version\": 2,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": false,\n        \"createdAt\": \"2022-06-21T00:06:22.442Z\",\n        \"updatedAt\": \"2022-06-21T00:06:22.442Z\"\n    },\n    {\n        \"_id\": \"62b10b7efb39edda3024b3ee\",\n        \"language_key\": \"en\",\n        \"key\": \"help\",\n        \"value\": \"help\",\n        \"status\": \"Not reviewed\",\n        \"version\": 2,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": false,\n        \"createdAt\": \"2022-06-21T00:06:22.443Z\",\n        \"updatedAt\": \"2022-06-21T00:06:22.443Z\"\n    },\n    {\n        \"_id\": \"62b11037e487caff66ce7955\",\n        \"language_key\": \"ar\",\n        \"key\": \"hello\",\n        \"value\": \"أهلا\",\n        \"status\": \"Not reviewed\",\n        \"version\": 1,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": true,\n        \"createdAt\": \"2022-06-21T00:26:31.365Z\",\n        \"updatedAt\": \"2022-06-21T00:26:31.365Z\"\n    },\n    {\n        \"_id\": \"62b110b5e487caff66ce795b\",\n        \"language_key\": \"ar\",\n        \"key\": \"hello\",\n        \"value\": \"أهلا\",\n        \"status\": \"Not reviewed\",\n        \"version\": 2,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": true,\n        \"createdAt\": \"2022-06-21T00:28:37.051Z\",\n        \"updatedAt\": \"2022-06-21T00:28:37.051Z\"\n    }\n]"
 						}
 					]
 				},
@@ -643,20 +1172,32 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/translation/:key/all",
+							"raw": "{{baseUrl}}/api/translation/:language_key/all?status=Not reviewed&is_deleted=false",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
 								"translation",
-								":key",
+								":language_key",
 								"all"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "Not reviewed",
+									"description": "Optional - options: Old, Rejected, Not reviewed, Approved"
+								},
+								{
+									"key": "is_deleted",
+									"value": "false",
+									"description": "Optional - boolean"
+								}
 							],
 							"variable": [
 								{
-									"key": "key",
-									"value": ""
+									"key": "language_key",
+									"value": "ar"
 								}
 							]
 						}
@@ -668,20 +1209,32 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/translation/:key/all",
+									"raw": "{{baseUrl}}/api/translation/:language_key/all?status=Not reviewed&is_deleted=false",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"translation",
-										":key",
+										":language_key",
 										"all"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "Not reviewed",
+											"description": "Optional - options: Old, Rejected, Not reviewed, Approved"
+										},
+										{
+											"key": "is_deleted",
+											"value": "false",
+											"description": "Optional - boolean"
+										}
 									],
 									"variable": [
 										{
-											"key": "key",
-											"value": "tr"
+											"key": "language_key",
+											"value": "ar"
 										}
 									]
 								}
@@ -691,28 +1244,80 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
 									"value": "application/json; charset=utf-8"
 								},
 								{
-									"key": "ETag",
-									"value": "W/\"8cc-Qp7AOr9j+ol7h4nDCnDY/kt2CmQ\""
+									"key": "Content-Length",
+									"value": "567"
 								},
 								{
-									"key": "Content-Encoding",
-									"value": "gzip"
+									"key": "ETag",
+									"value": "W/\"237-QYbehgHJADsjPFO3XqQ28LDmI+M\""
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 22 Apr 2022 00:00:09 GMT"
+									"value": "Thu, 23 Jun 2022 18:50:16 GMT"
 								},
 								{
 									"key": "Connection",
@@ -721,69 +1326,58 @@
 								{
 									"key": "Keep-Alive",
 									"value": "timeout=5"
-								},
-								{
-									"key": "Transfer-Encoding",
-									"value": "chunked"
 								}
 							],
 							"cookie": [],
-							"body": "[\n    {\n        \"_id\": \"6261ed74b58a8a0f31a8e740\",\n        \"key\": \"tr\",\n        \"version\": 0.1,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:49:08.008Z\",\n        \"updatedAt\": \"2022-04-21T23:49:08.008Z\"\n    },\n    {\n        \"_id\": \"6261ed982cc0572090845605\",\n        \"key\": \"tr\",\n        \"version\": 0.2,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:49:44.391Z\",\n        \"updatedAt\": \"2022-04-21T23:49:44.391Z\"\n    },\n    {\n        \"_id\": \"6261edd62cc057209084560a\",\n        \"key\": \"tr\",\n        \"version\": 0.30000000000000004,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:50:46.891Z\",\n        \"updatedAt\": \"2022-04-21T23:50:46.891Z\"\n    },\n    {\n        \"_id\": \"6261ee0823dc66936ae38544\",\n        \"key\": \"tr\",\n        \"version\": 0.4,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:51:36.274Z\",\n        \"updatedAt\": \"2022-04-21T23:51:36.274Z\"\n    },\n    {\n        \"_id\": \"6261ee7486286331c0af0378\",\n        \"key\": \"tr\",\n        \"version\": 0.5,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:53:24.179Z\",\n        \"updatedAt\": \"2022-04-21T23:53:24.179Z\"\n    },\n    {\n        \"_id\": \"6261ef2c18d145d2e8e8f4ef\",\n        \"key\": \"tr\",\n        \"version\": 5,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:56:28.077Z\",\n        \"updatedAt\": \"2022-04-21T23:56:28.077Z\"\n    },\n    {\n        \"_id\": \"6261ef4ef2981ef86d996aa3\",\n        \"key\": \"tr\",\n        \"version\": 5,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:57:02.380Z\",\n        \"updatedAt\": \"2022-04-21T23:57:02.380Z\"\n    },\n    {\n        \"_id\": \"6261ef54f2981ef86d996aa8\",\n        \"key\": \"tr\",\n        \"version\": 5.1,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:57:08.837Z\",\n        \"updatedAt\": \"2022-04-21T23:57:08.837Z\"\n    },\n    {\n        \"_id\": \"6261ef67f2981ef86d996aad\",\n        \"key\": \"tr\",\n        \"version\": 6,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"createdAt\": \"2022-04-21T23:57:27.409Z\",\n        \"updatedAt\": \"2022-04-21T23:57:27.409Z\"\n    }\n]"
+							"body": "[\n    {\n        \"_id\": \"62b11037e487caff66ce7955\",\n        \"language_key\": \"ar\",\n        \"key\": \"hello\",\n        \"value\": \"أهلا\",\n        \"status\": \"Not reviewed\",\n        \"version\": 1,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": true,\n        \"createdAt\": \"2022-06-21T00:26:31.365Z\",\n        \"updatedAt\": \"2022-06-21T00:26:31.365Z\"\n    },\n    {\n        \"_id\": \"62b110b5e487caff66ce795b\",\n        \"language_key\": \"ar\",\n        \"key\": \"hello\",\n        \"value\": \"أهلا\",\n        \"status\": \"Not reviewed\",\n        \"version\": 2,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": true,\n        \"createdAt\": \"2022-06-21T00:28:37.051Z\",\n        \"updatedAt\": \"2022-06-21T00:28:37.051Z\"\n    }\n]"
 						}
 					]
 				},
 				{
-					"name": "Get the latest translation for a language",
+					"name": "Get the approved translation for a language",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/translation/:key/latest?parsed=",
+							"raw": "{{baseUrl}}/api/translation/:language_key/latest_full_translation",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
 								"translation",
-								":key",
-								"latest"
-							],
-							"query": [
-								{
-									"key": "parsed",
-									"value": "",
-									"description": "boolean"
-								}
+								":language_key",
+								"latest_full_translation"
 							],
 							"variable": [
 								{
-									"key": "key",
-									"value": ""
+									"key": "language_key",
+									"value": "en"
 								}
 							]
 						}
 					},
 					"response": [
 						{
-							"name": "Full document",
+							"name": "Get the latest translation for a language",
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/translation/:key/latest",
+									"raw": "{{baseUrl}}/api/translation/:language_key/latest_full_translation",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"translation",
-										":key",
-										"latest"
+										":language_key",
+										"latest_full_translation"
 									],
 									"variable": [
 										{
-											"key": "key",
-											"value": "tr"
+											"key": "language_key",
+											"value": "en"
 										}
 									]
 								}
@@ -793,12 +1387,64 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
@@ -806,15 +1452,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "246"
+									"value": "313"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"f6-FwnUTa99MjDjYCld6jerWRz9xWI\""
+									"value": "W/\"139-mhHkDfYhlLaVGdNIYZyT2Yn5R+U\""
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 22 Apr 2022 00:00:54 GMT"
+									"value": "Thu, 23 Jun 2022 18:50:36 GMT"
 								},
 								{
 									"key": "Connection",
@@ -826,77 +1472,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"_id\": \"6261ef67f2981ef86d996aad\",\n    \"key\": \"tr\",\n    \"version\": 6,\n    \"is_auto_generated\": true,\n    \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n    \"createdAt\": \"2022-04-21T23:57:27.409Z\",\n    \"updatedAt\": \"2022-04-21T23:57:27.409Z\"\n}"
-						},
-						{
-							"name": "Parsed data only",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/api/translation/:key/latest?parsed=true",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"translation",
-										":key",
-										"latest"
-									],
-									"query": [
-										{
-											"key": "parsed",
-											"value": "true"
-										}
-									],
-									"variable": [
-										{
-											"key": "key",
-											"value": "tr"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin, Accept-Encoding"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "68"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"44-Nd8YZz5W1KkelQdltVI7IXwrf/4\""
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 22 Apr 2022 00:04:00 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"hello\": \"merhaba\",\n    \"welcome_message\": \"Uygulamamıza hoş geldiniz!\"\n}"
+							"body": "[\n    {\n        \"_id\": \"62b10b7efb39edda3024b3ec\",\n        \"language_key\": \"en\",\n        \"key\": \"hello\",\n        \"value\": \"hello\",\n        \"status\": \"Approved\",\n        \"version\": 2,\n        \"submitted_by\": \"Abdulrahman Alfawal\",\n        \"is_deleted\": false,\n        \"is_auto_generated\": false,\n        \"createdAt\": \"2022-06-21T00:06:22.442Z\",\n        \"updatedAt\": \"2022-06-21T00:24:24.858Z\",\n        \"approved_by\": \"req.oidc.user.name\"\n    }\n]"
 						}
 					]
 				},
@@ -906,32 +1482,32 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/translation/:key/version/:version?parsed=",
+							"raw": "{{baseUrl}}/api/translation/:language_key/part_version?version=1&key=hello",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
 								"translation",
-								":key",
-								"version",
-								":version"
+								":language_key",
+								"part_version"
 							],
 							"query": [
 								{
-									"key": "parsed",
-									"value": "",
-									"description": "boolean"
+									"key": "version",
+									"value": "1",
+									"description": "Required - Integer: version of the translation portion"
+								},
+								{
+									"key": "key",
+									"value": "hello",
+									"description": "Required - String: key of the translation portion"
 								}
 							],
 							"variable": [
 								{
-									"key": "key",
-									"value": ""
-								},
-								{
-									"key": "version",
-									"value": ""
+									"key": "language_key",
+									"value": "en"
 								}
 							]
 						}
@@ -943,32 +1519,32 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/translation/:key/version/:version?parsed=false",
+									"raw": "{{baseUrl}}/api/translation/:language_key/part_version?version=1&key=hello",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"translation",
-										":key",
-										"version",
-										":version"
+										":language_key",
+										"part_version"
 									],
 									"query": [
 										{
-											"key": "parsed",
-											"value": "false",
-											"description": "boolean"
+											"key": "version",
+											"value": "1",
+											"description": "Required - Integer: version of the translation portion"
+										},
+										{
+											"key": "key",
+											"value": "hello",
+											"description": "Required - String: key of the translation portion"
 										}
 									],
 									"variable": [
 										{
-											"key": "key",
-											"value": "tr"
-										},
-										{
-											"key": "version",
-											"value": "5"
+											"key": "language_key",
+											"value": "en"
 										}
 									]
 								}
@@ -978,12 +1554,64 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
@@ -991,15 +1619,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "246"
+									"value": "280"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"f6-awl8xuBtL6HwA+MI2ZO2CaP2/Y8\""
+									"value": "W/\"118-A9rnwBb/fORJGjHkT+xG2VooGvM\""
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 22 Apr 2022 00:09:47 GMT"
+									"value": "Thu, 23 Jun 2022 18:56:29 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1011,83 +1639,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"_id\": \"6261ef2c18d145d2e8e8f4ef\",\n    \"key\": \"tr\",\n    \"version\": 5,\n    \"is_auto_generated\": true,\n    \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n    \"createdAt\": \"2022-04-21T23:56:28.077Z\",\n    \"updatedAt\": \"2022-04-21T23:56:28.077Z\"\n}"
-						},
-						{
-							"name": "Parsed data only",
-							"originalRequest": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/api/translation/:key/version/:version?parsed=true",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"translation",
-										":key",
-										"version",
-										":version"
-									],
-									"query": [
-										{
-											"key": "parsed",
-											"value": "true",
-											"description": "boolean"
-										}
-									],
-									"variable": [
-										{
-											"key": "key",
-											"value": "tr"
-										},
-										{
-											"key": "version",
-											"value": "5"
-										}
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin, Accept-Encoding"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "68"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"44-Nd8YZz5W1KkelQdltVI7IXwrf/4\""
-								},
-								{
-									"key": "Date",
-									"value": "Fri, 22 Apr 2022 00:11:09 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"hello\": \"merhaba\",\n    \"welcome_message\": \"Uygulamamıza hoş geldiniz!\"\n}"
+							"body": "{\n    \"_id\": \"62b10b75fb39edda3024b3e3\",\n    \"language_key\": \"en\",\n    \"key\": \"hello\",\n    \"value\": \"hello\",\n    \"status\": \"Not reviewed\",\n    \"version\": 1,\n    \"submitted_by\": \"Abdulrahman Alfawal\",\n    \"is_deleted\": false,\n    \"is_auto_generated\": false,\n    \"createdAt\": \"2022-06-21T00:06:13.606Z\",\n    \"updatedAt\": \"2022-06-21T00:06:13.606Z\"\n}"
 						}
 					]
 				},
@@ -1096,21 +1648,30 @@
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"language_key\": \"ar\",\r\n            \"key\": \"hello\",\r\n            \"value\": \"مرحباً\"\r\n        },\r\n        {\r\n            \"language_key\": \"ar\",\r\n            \"key\": \"how\",\r\n            \"value\": \"كيف\"\r\n        },\r\n        {\r\n            \"language_key\": \"ar\",\r\n            \"key\": \"help\",\r\n            \"value\": \"مساعدة\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "{{baseUrl}}/api/translation/:key/add",
+							"raw": "{{baseUrl}}/api/translation/:language_key/add",
 							"host": [
 								"{{baseUrl}}"
 							],
 							"path": [
 								"api",
 								"translation",
-								":key",
+								":language_key",
 								"add"
 							],
 							"variable": [
 								{
-									"key": "key",
-									"value": ""
+									"key": "language_key",
+									"value": "ar"
 								}
 							]
 						}
@@ -1123,7 +1684,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"version\": 5,\r\n    \"data\": {\r\n        \"hello\": \"hello\",\r\n        \"welcome_message\": \"Welcome to our app!\"\r\n    }\r\n}",
+									"raw": "{\r\n    \"data\": [\r\n        {\r\n            \"language_key\": \"ar\",\r\n            \"key\": \"hello\",\r\n            \"value\": \"مرحباً\"\r\n        },\r\n        {\r\n            \"language_key\": \"ar\",\r\n            \"key\": \"how\",\r\n            \"value\": \"كيف\"\r\n        },\r\n        {\r\n            \"language_key\": \"ar\",\r\n            \"key\": \"help\",\r\n            \"value\": \"مساعدة\"\r\n        }\r\n    ]\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1131,20 +1692,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/api/translation/:key/add",
+									"raw": "{{baseUrl}}/api/translation/:language_key/add",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"translation",
-										":key",
+										":language_key",
 										"add"
 									],
 									"variable": [
 										{
-											"key": "key",
-											"value": "en"
+											"key": "language_key",
+											"value": "ar"
 										}
 									]
 								}
@@ -1154,12 +1715,64 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
@@ -1167,15 +1780,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "479"
+									"value": "20"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"1df-IxhP3iXn2/d0/yAsxD3v5GICI7Q\""
+									"value": "W/\"14-Y53wuE/mmbSikKcT/WualL1N65U\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 21 Apr 2022 23:34:08 GMT"
+									"value": "Thu, 23 Jun 2022 18:58:52 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1187,80 +1800,7 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"language_information\": {\n        \"_id\": \"6261e20b95a7aa721756ff60\",\n        \"key\": \"en\",\n        \"actual_name\": \"english\",\n        \"symbol\": \"🇺🇸\",\n        \"versions\": [\n            0,\n            1,\n            2,\n            3,\n            7,\n            6,\n            5\n        ],\n        \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n        \"updatedAt\": \"2022-04-21T23:34:08.001Z\"\n    },\n    \"language_translation\": {\n        \"key\": \"en\",\n        \"version\": 5,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"_id\": \"6261e9ef1f98aa3acb6e5907\",\n        \"createdAt\": \"2022-04-21T23:34:07.900Z\",\n        \"updatedAt\": \"2022-04-21T23:34:07.900Z\"\n    }\n}"
-						},
-						{
-							"name": "With auto versioning",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n    \"data\": {\r\n        \"hello\": \"hello\",\r\n        \"welcome_message\": \"Welcome to our app!\"\r\n    }\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/api/translation/:key/add",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"translation",
-										":key",
-										"add"
-									],
-									"variable": [
-										{
-											"key": "key",
-											"value": "en"
-										}
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin, Accept-Encoding"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "485"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"1e5-7DpozSSaKlpTCboMdv5tr0PBZ4s\""
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 21 Apr 2022 23:35:10 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"language_information\": {\n        \"_id\": \"6261e20b95a7aa721756ff60\",\n        \"key\": \"en\",\n        \"actual_name\": \"english\",\n        \"symbol\": \"🇺🇸\",\n        \"versions\": [\n            0,\n            1,\n            2,\n            3,\n            7,\n            6,\n            5,\n            7.1\n        ],\n        \"createdAt\": \"2022-04-21T23:00:27.337Z\",\n        \"updatedAt\": \"2022-04-21T23:35:10.753Z\"\n    },\n    \"language_translation\": {\n        \"key\": \"en\",\n        \"version\": 7.1,\n        \"is_auto_generated\": false,\n        \"data\": \"{\\\"hello\\\":\\\"hello\\\",\\\"welcome_message\\\":\\\"Welcome to our app!\\\"}\",\n        \"_id\": \"6261ea2e1f98aa3acb6e590b\",\n        \"createdAt\": \"2022-04-21T23:35:10.657Z\",\n        \"updatedAt\": \"2022-04-21T23:35:10.657Z\"\n    }\n}"
+							"body": "{\n    \"status\": \"success\"\n}"
 						}
 					]
 				},
@@ -1270,7 +1810,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{baseUrl}}/api/translation/generate_new/:key",
+							"raw": "{{baseUrl}}/api/translation/generate_new/:from/to/:to",
 							"host": [
 								"{{baseUrl}}"
 							],
@@ -1278,12 +1818,18 @@
 								"api",
 								"translation",
 								"generate_new",
-								":key"
+								":from",
+								"to",
+								":to"
 							],
 							"variable": [
 								{
-									"key": "key",
-									"value": ""
+									"key": "from",
+									"value": "en"
+								},
+								{
+									"key": "to",
+									"value": "ar"
 								}
 							]
 						}
@@ -1295,7 +1841,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "{{baseUrl}}/api/translation/generate_new/:key",
+									"raw": "{{baseUrl}}/api/translation/generate_new/:from/to/:to",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -1303,12 +1849,18 @@
 										"api",
 										"translation",
 										"generate_new",
-										":key"
+										":from",
+										"to",
+										":to"
 									],
 									"variable": [
 										{
-											"key": "key",
-											"value": "tr"
+											"key": "from",
+											"value": "en"
+										},
+										{
+											"key": "to",
+											"value": "ar"
 										}
 									]
 								}
@@ -1318,12 +1870,64 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
@@ -1331,15 +1935,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "441"
+									"value": "20"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"1b9-arWIUpnzvYvkeGYvtY7E+mg0l0k\""
+									"value": "W/\"14-Y53wuE/mmbSikKcT/WualL1N65U\""
 								},
 								{
 									"key": "Date",
-									"value": "Thu, 21 Apr 2022 23:49:44 GMT"
+									"value": "Thu, 23 Jun 2022 18:59:29 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1351,16 +1955,52 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"language_information\": {\n        \"_id\": \"6261ecf6ce5f365a9bbb74a5\",\n        \"key\": \"tr\",\n        \"versions\": [\n            0.1,\n            0.2\n        ],\n        \"createdAt\": \"2022-04-21T23:47:02.946Z\",\n        \"updatedAt\": \"2022-04-21T23:49:44.485Z\"\n    },\n    \"language_translation\": {\n        \"key\": \"tr\",\n        \"version\": 0.2,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"_id\": \"6261ed982cc0572090845605\",\n        \"createdAt\": \"2022-04-21T23:49:44.391Z\",\n        \"updatedAt\": \"2022-04-21T23:49:44.391Z\"\n    }\n}"
+							"body": "{\n    \"status\": \"success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Change the status of a specefic translation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"key\": \"hello\",\r\n    \"status\": \"Approved\",\r\n    \"version\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
+						"url": {
+							"raw": "{{baseUrl}}/api/translation/:language_key/update_status",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"translation",
+								":language_key",
+								"update_status"
+							],
+							"variable": [
+								{
+									"key": "language_key",
+									"value": "en"
+								}
+							]
+						}
+					},
+					"response": [
 						{
-							"name": "With a specific version",
+							"name": "Change the status of a specefic translation",
 							"originalRequest": {
-								"method": "POST",
+								"method": "PUT",
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"version\": 6\r\n}",
+									"raw": "{\r\n    \"key\": \"hello\",\r\n    \"status\": \"Approved\",\r\n    \"version\": 2\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1368,121 +2008,20 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseUrl}}/api/translation/generate_new/:key",
+									"raw": "{{baseUrl}}/api/translation/:language_key/update_status",
 									"host": [
 										"{{baseUrl}}"
 									],
 									"path": [
 										"api",
 										"translation",
-										"generate_new",
-										":key"
+										":language_key",
+										"update_status"
 									],
 									"variable": [
 										{
-											"key": "key",
-											"value": "tr"
-										}
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin, Accept-Encoding"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "475"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"1db-zeOqKC4VhXuz4DWIg+pHWbQICGs\""
-								},
-								{
-									"key": "Date",
-									"value": "Thu, 21 Apr 2022 23:57:27 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								},
-								{
-									"key": "Keep-Alive",
-									"value": "timeout=5"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"language_information\": {\n        \"_id\": \"6261ecf6ce5f365a9bbb74a5\",\n        \"key\": \"tr\",\n        \"versions\": [\n            0.1,\n            0.2,\n            0.30000000000000004,\n            0.4,\n            0.5,\n            5,\n            5.1,\n            6\n        ],\n        \"createdAt\": \"2022-04-21T23:47:02.946Z\",\n        \"updatedAt\": \"2022-04-21T23:57:27.500Z\"\n    },\n    \"language_translation\": {\n        \"key\": \"tr\",\n        \"version\": 6,\n        \"is_auto_generated\": true,\n        \"data\": \"{\\\"hello\\\":\\\"merhaba\\\",\\\"welcome_message\\\":\\\"Uygulamamıza hoş geldiniz!\\\"}\",\n        \"_id\": \"6261ef67f2981ef86d996aad\",\n        \"createdAt\": \"2022-04-21T23:57:27.409Z\",\n        \"updatedAt\": \"2022-04-21T23:57:27.409Z\"\n    }\n}"
-						}
-					]
-				},
-				{
-					"name": "Delete a specific version",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"url": {
-							"raw": "{{baseUrl}}/api/translation/:key/version/:version",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"api",
-								"translation",
-								":key",
-								"version",
-								":version"
-							],
-							"variable": [
-								{
-									"key": "key",
-									"value": ""
-								},
-								{
-									"key": "version",
-									"value": ""
-								}
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "New Request",
-							"originalRequest": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{baseUrl}}/api/translation/:key/version/:version",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"api",
-										"translation",
-										":key",
-										"version",
-										":version"
-									],
-									"variable": [
-										{
-											"key": "key",
-											"value": "tr"
-										},
-										{
-											"key": "version",
-											"value": "6"
+											"key": "language_key",
+											"value": "en"
 										}
 									]
 								}
@@ -1492,12 +2031,64 @@
 							"_postman_previewlanguage": "json",
 							"header": [
 								{
-									"key": "X-Powered-By",
-									"value": "Express"
-								},
-								{
 									"key": "Vary",
 									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
 								},
 								{
 									"key": "Content-Type",
@@ -1505,15 +2096,15 @@
 								},
 								{
 									"key": "Content-Length",
-									"value": "16"
+									"value": "20"
 								},
 								{
 									"key": "ETag",
-									"value": "W/\"10-sVfJQj54VHOAwj+hmq8RTMGcte8\""
+									"value": "W/\"14-Y53wuE/mmbSikKcT/WualL1N65U\""
 								},
 								{
 									"key": "Date",
-									"value": "Fri, 22 Apr 2022 00:13:49 GMT"
+									"value": "Thu, 23 Jun 2022 19:04:15 GMT"
 								},
 								{
 									"key": "Connection",
@@ -1525,7 +2116,174 @@
 								}
 							],
 							"cookie": [],
-							"body": "{\n    \"deleted\": true\n}"
+							"body": "{\n    \"status\": \"success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete a specific version",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/translation/delete/:language_key?version=1&key=hello",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"translation",
+								"delete",
+								":language_key"
+							],
+							"query": [
+								{
+									"key": "version",
+									"value": "1",
+									"description": "Required - Integer: version of the translation portion"
+								},
+								{
+									"key": "key",
+									"value": "hello",
+									"description": "Required - String: key of the translation portion"
+								}
+							],
+							"variable": [
+								{
+									"key": "language_key",
+									"value": "en"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete a specific version",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/api/translation/delete/:language_key?version=1&key=hello",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"api",
+										"translation",
+										"delete",
+										":language_key"
+									],
+									"query": [
+										{
+											"key": "version",
+											"value": "1",
+											"description": "Required - Integer: version of the translation portion"
+										},
+										{
+											"key": "key",
+											"value": "hello",
+											"description": "Required - String: key of the translation portion"
+										}
+									],
+									"variable": [
+										{
+											"key": "language_key",
+											"value": "en"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Vary",
+									"value": "Origin, Accept-Encoding"
+								},
+								{
+									"key": "Content-Security-Policy",
+									"value": "default-src 'self';base-uri 'self';block-all-mixed-content;font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+								},
+								{
+									"key": "Cross-Origin-Embedder-Policy",
+									"value": "require-corp"
+								},
+								{
+									"key": "Cross-Origin-Opener-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Cross-Origin-Resource-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "X-DNS-Prefetch-Control",
+									"value": "off"
+								},
+								{
+									"key": "Expect-CT",
+									"value": "max-age=0"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15552000; includeSubDomains"
+								},
+								{
+									"key": "X-Download-Options",
+									"value": "noopen"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Origin-Agent-Cluster",
+									"value": "?1"
+								},
+								{
+									"key": "X-Permitted-Cross-Domain-Policies",
+									"value": "none"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "no-referrer"
+								},
+								{
+									"key": "X-XSS-Protection",
+									"value": "0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "20"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"14-Y53wuE/mmbSikKcT/WualL1N65U\""
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 23 Jun 2022 19:03:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"success\"\n}"
 						}
 					]
 				}

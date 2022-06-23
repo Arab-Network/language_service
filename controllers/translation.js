@@ -3,100 +3,114 @@ import LanguageInformation from "../models/Information.js";
 import requestTranslate from "../services/translate/requestTranslate.js";
 import languages from "../services/translate/languages.js";
 
-// TODO: add error codes/internal codes
-
 export const getAllTranslations = async (req, res) => {
-  const { status } = req.query;
+  const { status, is_deleted } = req.query;
   try {
-    let doc;
+    const isDeleted = Boolean(eval(is_deleted)) || false;
+    const dbQuery = { is_deleted: isDeleted };
+
     if (status) {
       if (!Object.values(StatusOptions).includes(status)) {
         return res
           .status(422)
           .json({ error_message: `Invalid status choice: ${status}` });
       }
-      doc = await Translation.find({ status });
-    } else {
-      doc = await Translation.find({});
+      dbQuery.status = status;
     }
 
-    if (doc.length === 0)
+    const doc = await Translation.find(dbQuery);
+
+    if (doc.length === 0) {
       return res.status(400).json({ status: "no results were found" });
+    }
 
     return res.status(200).json(doc);
   } catch (e) {
-    return res
-      .status(500)
-      .json({ status: "error", error_code: 100, error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@100" });
   }
 };
 
-export const getAllByKey = async (req, res) => {
-  const { key } = req.params;
-  const { status } = req.query;
+export const getAllByLanguageKey = async (req, res) => {
+  const { language_key } = req.params;
+  const { status, is_deleted } = req.query;
   try {
-    let doc;
+    const isDeleted = Boolean(eval(is_deleted)) || false;
+    const dbQuery = {
+      language_key,
+      is_deleted: isDeleted,
+    };
+
     if (status) {
       if (!Object.values(StatusOptions).includes(status)) {
         return res
           .status(422)
           .json({ error_message: `Invalid status choice: ${status}` });
       }
-      doc = await Translation.find({ language_key: key, status });
-    } else {
-      doc = await Translation.find({ language_key: key });
+      dbQuery.status = status;
     }
 
-    if (doc.length === 0)
+    const doc = await Translation.find(dbQuery);
+
+    if (doc.length === 0) {
       return res.status(400).json({ status: "no results were found" });
+    }
 
     return res.status(200).json(doc);
   } catch (e) {
-    return res
-      .status(500)
-      .json({ status: "error", error_code: 101, error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@101" });
   }
 };
 
-export const getApprovedTranslation = async (req, res) => {
-  const { key } = req.params;
-  const { parsed } = req.query;
+export const getApprovedTranslationsByLanguageKey = async (req, res) => {
+  const { language_key } = req.params;
   try {
-    const doc = await Translation.findOne({
-      language_key: key,
+    const doc = await Translation.find({
+      language_key,
       status: StatusOptions.APPROVED,
     });
 
-    if (!doc)
+    if (doc.length === 0) {
       return res.status(400).json({
         status:
-          "Couldn't find an approved translation for the selected language.",
+          "Couldn't find an approved translations for the selected language.",
       });
+    }
 
-    return Boolean(eval(parsed)) === true
-      ? res.status(200).json(doc.data)
-      : res.status(200).json(doc);
+    return res.status(200).json(doc);
   } catch (e) {
-    return res.status(500).json({ status: "error", error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@102" });
   }
 };
 
 export const getByVersion = async (req, res) => {
-  const { key, version } = req.params;
-  const { parsed } = req.query;
+  const { language_key } = req.params;
+  const { version, key } = req.query;
   try {
-    const doc = await Translation.findOne({ language_key: key, version });
-    if (!doc) return res.status(400).json({ status: "no results were found" });
+    const versionNum = Number(version);
+    if (!key | !Number.isInteger(versionNum)) {
+      return res.status(422).json({
+        status: "missing fields",
+        error_message: "(key, version) fields are required.",
+      });
+    }
 
-    return Boolean(eval(parsed)) === true
-      ? res.status(200).json(doc.data)
-      : res.status(200).json(doc);
+    const doc = await Translation.findOne({
+      language_key,
+      key,
+      version: versionNum,
+    });
+    if (!doc) {
+      return res.status(400).json({ status: "no results were found" });
+    }
+
+    return res.status(200).json(doc);
   } catch (e) {
-    return res.status(500).json({ status: "error", error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@103" });
   }
 };
 
 export const addNewTranslation = async (req, res) => {
+  const { language_key } = req.params;
   const { data } = req.body;
   try {
     if (!data) {
@@ -107,7 +121,7 @@ export const addNewTranslation = async (req, res) => {
     }
 
     const languageInfoDoc = await LanguageInformation.findOne({
-      key: data.language_key,
+      key: language_key,
     });
     if (!languageInfoDoc) {
       return res.status(422).json({
@@ -117,40 +131,126 @@ export const addNewTranslation = async (req, res) => {
       });
     }
 
-    delete data.approved_by;
-    delete data.is_auto_generated;
+    const validatedData = [];
 
-    const validatedData = {
-      ...data,
-      status: StatusOptions.NOT_REVIEWED,
-      version: languageInfoDoc.versions + 1,
-      submitted_by: req.oidc.user.name,
-    };
+    for (const part in data) {
+      const version =
+        (
+          await Translation.findOne({
+            language_key,
+            key: data[part].key,
+          })
+        )?.version + 1 || 1;
 
-    const languageTranslationDoc = await Translation.create(validatedData);
+      validatedData.push({
+        language_key,
+        key: data[part].key,
+        value: data[part].value,
+        status: StatusOptions.NOT_REVIEWED,
+        version,
+        submitted_by: req.oidc.user.name,
+      });
+    }
+    await Translation.insertMany(validatedData);
 
-    const updateLanguageInfoDoc = await LanguageInformation.findOneAndUpdate(
+    await LanguageInformation.findOneAndUpdate(
       {
-        key: data.language_key,
+        key: language_key,
       },
       {
-        versions: languageInfoDoc.versions + 1,
+        $inc: {
+          versions: validatedData.length,
+        },
       },
       {
         new: true,
       }
     );
+
     return res.status(201).json({
-      language_information: updateLanguageInfoDoc,
-      language_translation: languageTranslationDoc,
+      status: "success",
     });
   } catch (e) {
-    return res.status(500).json({ status: "error", error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@104" });
+  }
+};
+
+export const generateNewVersion = async (req, res) => {
+  const { from, to } = req.params;
+  try {
+    if (!languages.includes(from) | !languages.includes(to)) {
+      return res.status(422).json({
+        status: "bad query",
+        error_message: "One of the requested languages keys is invalid.",
+      });
+    }
+
+    const approvedTranslation = await Translation.find({
+      language_key: from,
+      status: StatusOptions.APPROVED,
+    });
+    if (approvedTranslation.length === 0) {
+      return res.status(422).json({
+        error_message:
+          "Couldn't find an approved translation for the source language.",
+      });
+    }
+
+    const translatedData = await requestTranslate(
+      from,
+      to,
+      approvedTranslation
+    );
+
+    let informationDoc = await LanguageInformation.findOne({ key: to });
+    if (!informationDoc) {
+      informationDoc = await LanguageInformation.create({
+        key: to,
+      });
+    }
+
+    for (const translation in translatedData) {
+      const { language_key, key } = translatedData[translation];
+      const version =
+        (
+          await Translation.findOne({
+            language_key,
+            key,
+          })
+        )?.version + 1 || 1;
+
+      translatedData[translation].version = version;
+      translatedData[translation].submitted_by = req.oidc.user.name;
+    }
+
+    await Translation.insertMany(translatedData);
+
+    await LanguageInformation.findOneAndUpdate(
+      {
+        key: to,
+      },
+      {
+        $inc: {
+          versions: translatedData.length,
+        },
+      },
+      {
+        new: true,
+      }
+    );
+
+    return res.status(201).json({
+      status: "success",
+    });
+  } catch (e) {
+    return res.status(500).json({ status: "error", error_message: "E@105" });
   }
 };
 
 export const updateStatus = async (req, res) => {
-  const { key, version, status } = req.params;
+  const { language_key } = req.params;
+  const { key, status, version } = req.body;
+
   try {
     if (!key | !version | !status) {
       return res.status(422).json({
@@ -165,134 +265,91 @@ export const updateStatus = async (req, res) => {
         .json({ error_message: `Invalid status choice: ${status}` });
     }
 
+    const dbQuery = {
+      status,
+    };
+
     if (status === StatusOptions.APPROVED) {
-      await Translation.updateMany(
-        {
-          status,
-        },
-        {
-          status: StatusOptions.OLD,
-        }
-      );
-      await Translation.findOneAndUpdate(
-        {
-          language_key: key,
-          version,
-        },
-        {
-          status,
-          approved_by: req.oidc.user.name,
-        },
-        {
-          new: true,
-        }
-      );
-    } else {
-      await Translation.findOneAndUpdate(
-        {
-          language_key: key,
-          version,
-        },
-        {
-          status,
-        },
-        {
-          new: true,
-        }
-      );
+      dbQuery.approved_by = req.oidc.user.name;
     }
+
+    await Translation.updateMany(
+      {
+        language_key,
+        key,
+        status: StatusOptions.APPROVED,
+      },
+      {
+        status: StatusOptions.OLD,
+      }
+    );
+
+    await Translation.findOneAndUpdate(
+      {
+        language_key,
+        key,
+        version,
+      },
+      dbQuery,
+      {
+        new: true,
+      }
+    );
+
     return res.status(200).json({ status: "success" });
   } catch (e) {
-    return res.status(500).json({ status: "error", error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@106" });
   }
 };
 
-// TODO: refactor
-export const generateNewVersion = async (req, res) => {
-  const { key } = req.params;
-  const { version } = req.body;
-  try {
-    if (!languages.includes(key)) {
-      return res.status(422).json({
-        status: "bad param",
-        error_message: "The requested language key is invalid.",
-      });
-    }
-
-    const englishTranslation = await Translation.findOne({
-      key: "en",
-    }).sort({
-      createdAt: -1,
-    });
-    console.log(englishTranslation);
-    const translation = await requestTranslate(key, englishTranslation.data);
-
-    let informationDoc = await LanguageInformation.findOne({ key });
-    if (!informationDoc) {
-      informationDoc = await LanguageInformation.create({
-        key,
-      });
-    }
-
-    const newVersion = !version
-      ? Math.max(0, ...informationDoc.versions) + 0.1
-      : version;
-
-    const translationDoc = await Translation.create({
-      key,
-      version: newVersion,
-      is_auto_generated: true,
-      data: translation,
-    });
-
-    const updateLanguageInformation =
-      await LanguageInformation.findOneAndUpdate(
-        {
-          key,
-        },
-        {
-          $addToSet: {
-            versions: newVersion,
-          },
-        },
-        {
-          new: true,
-        }
-      );
-
-    return res.status(201).json({
-      language_information: updateLanguageInformation,
-      language_translation: translationDoc,
-    });
-  } catch (e) {
-    return res.status(500).json({ status: "error", error_message: e.message });
-  }
-};
-
-// TODO: refactor
 export const deleteByVersion = async (req, res) => {
-  const { key, version } = req.params;
+  const { language_key } = req.params;
+  const { key, version } = req.query;
   try {
-    const doc = await Translation.deleteOne({ key, version });
-    if (doc.deletedCount !== 1) {
-      return res.status(400).json({ status: "no results were found" });
+    const versionNum = Number(version);
+    if (!key | !Number.isInteger(versionNum)) {
+      return res.status(422).json({
+        status: "missing fields",
+        error_message: "(key, version) fields are required.",
+      });
     }
-    const updateLanguageInformationVersion =
-      await LanguageInformation.findOneAndUpdate(
-        {
-          key,
+
+    const doc = await Translation.findOneAndUpdate(
+      {
+        language_key,
+        key,
+        version: versionNum,
+      },
+      {
+        is_deleted: true,
+      },
+      {
+        new: true,
+      }
+    );
+
+    if (!doc.is_deleted) {
+      return res.status(400).json({
+        status: "some error occurred while trying to delete the translation.",
+      });
+    }
+
+    await LanguageInformation.findOneAndUpdate(
+      {
+        key: language_key,
+      },
+      {
+        $inc: {
+          versions: -1,
         },
-        {
-          $pull: {
-            versions: version,
-          },
-        },
-        {
-          new: true,
-        }
-      );
-    return res.status(200).json({ deleted: true });
+      },
+      {
+        new: true,
+      }
+    );
+
+    return res.status(200).json({ status: "success" });
   } catch (e) {
-    return res.status(500).json({ status: "error", error_message: e.message });
+    return res.status(500).json({ status: "error", error_message: "E@107" });
   }
 };

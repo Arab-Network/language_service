@@ -1,24 +1,22 @@
 import "dotenv/config";
-
+import { StatusOptions } from "../../models/Translation.js";
 import axios from "axios";
 
 const { GOOGLE_TRANSLATE_RAPIDAPI_KEY } = process.env;
 
-export default async (
-  targetLanguage,
-  data,
-  sourceLanguage = "en",
-  url = "https://google-translate1.p.rapidapi.com/language/translate/v2"
-) => {
+export default async (sourceLanguage, targetLanguage, data) => {
   try {
     const encodedParams = new URLSearchParams();
-    encodedParams.append("target", targetLanguage);
     encodedParams.append("source", sourceLanguage);
-    Object.values(data).forEach((value) => encodedParams.append("q", value));
+    encodedParams.append("target", targetLanguage);
+
+    data.forEach((translationPart) =>
+      encodedParams.append("q", translationPart.value)
+    );
 
     const options = {
       method: "POST",
-      url,
+      url: "https://google-translate1.p.rapidapi.com/language/translate/v2",
       timeout: 10000,
       headers: {
         "content-type": "application/x-www-form-urlencoded",
@@ -32,15 +30,23 @@ export default async (
     const response = await axios.request(options);
     const { translations } = response.data.data;
 
-    if (translations.length !== Object.keys(data).length) {
+    if (translations.length !== data.length) {
       throw new Error("Some values are missing.");
     }
 
+    const translatedData = [];
+
     translations.forEach((translationObject, i) => {
-      data[Object.keys(data)[i]] = translationObject.translatedText;
+      translatedData.push({
+        language_key: targetLanguage,
+        key: data[i].key,
+        value: translationObject.translatedText,
+        status: StatusOptions.NOT_REVIEWED,
+        is_auto_generated: true,
+      });
     });
 
-    return data;
+    return translatedData;
   } catch (e) {
     throw new Error("Error occurred while calling the API:", e.message);
   }

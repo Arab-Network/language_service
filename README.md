@@ -2,39 +2,45 @@
 
 ## How to run
 
+Initialize:
+
 ```bash
 yarn
+```
+
+Run:
+
+```bash
 yarn dev # nodemon
 ```
+
+ or:
 
 ```bash
 yarn start # node
 ```
 
-## Initial Auth0 setup
-
-TODO
-
 ## Deployment notes
 
-TODO
+Apply pre-deployment security checks from the security checklist.
 
-## indexing table for responses that include "internal_code" / "error_code" (developers only)
+## indexing table for responses that include "E@***" codes.
 
-TODO: change logic
-
-| Error Code  | Function                 | File                         |
-| :---:       |    :----:                |        :---:                 |
-| 100         | getAllTranslations       | ./controllers/translation.js |
-| 101         | getAllByKey              | ./controllers/translation.js |
-| 102         | getApprovedTranslation   | ./controllers/translation.js |
-| 103         | getByVersion             | ./controllers/translation.js |
-| 104         | addNewTranslation        | ./controllers/translation.js |
-| 105         | generateNewVersion       | ./controllers/translation.js |
-| 106         | deleteByVersion          | ./controllers/translation.js |
-| 108         | func                     | path                         |
-| 109         | func                     | path                         |
-| 110         | func                     | path                         |
-| 111         | func                     | path                         |
-| 112         | func                     | path                         |
-| 113         | func                     | path                         |
+| Error Code  | Function                 |
+| :---:       | :----:                   |
+| **File:**   | ***./controllers/translation.js*** |
+| 100         | getAllTranslations       |
+| 101         | getAllByLanguageKey      |
+| 102         | getApprovedTranslationsByLanguageKey |
+| 103         | getByVersion             |
+| 104         | addNewTranslation        |
+| 105         | generateNewVersion       |
+| 106         | updateStatus             |
+| 107         | deleteByVersion          |
+| **File:**   | ***./controllers/information.js*** |
+| 108         | getAll                   |
+| 109         | get                      |
+| 110         | add                      |
+| 111         | update                   |
+| 112         | addVersions              |
+| 113         | deleteOne                |

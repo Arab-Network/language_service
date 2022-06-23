@@ -1,12 +1,13 @@
 import "dotenv/config";
 
 import express from "express";
+import oidc from "express-openid-connect";
+const { auth } = oidc;
+
+import cors from "cors";
 import helmet from "helmet";
 import compression from "compression";
-import cors from "cors";
-
-import oidc from "express-openid-connect";
-const { auth, claimCheck, claimIncludes } = oidc;
+import rateLimit from "express-rate-limit";
 
 import { DatabaseConnect } from "./db/index.js";
 import LoggerService from "./logger/LoggerService.js";
@@ -24,8 +25,9 @@ const {
 
 const app = express();
 
+app.use(express.json({ limit: "60KB" }));
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+
 app.use(
   auth({
     authRequired: true,
@@ -36,8 +38,7 @@ app.use(
     secret,
   })
 );
-app.use(helmet());
-app.use(compression());
+
 app.use(
   cors({
     origin: [
@@ -49,20 +50,24 @@ app.use(
     optionsSuccessStatus: 200,
   })
 );
+app.use(helmet());
+app.use(compression());
+app.use(
+  rateLimit({
+    windowMs: 15 * 60 * 1000,
+    max: 100,
+    message: "Our API can serve you only 100 times every 15 mins.",
+    standardHeaders: false,
+    legacyHeaders: false,
+  })
+);
 
 app.use("/api/information", informationRoutes);
 app.use("/api/translation", translationRoutes);
 
-app.get(
-  "/profile",
-  // claimIncludes("Admin"),
-  // claimCheck((req, claims) => {
-  //   claims.isAdmin || claims.roles.includes("Admin");
-  // }),
-  (req, res) => {
-    return res.status(200).json(req.oidc.user);
-  }
-);
+app.get("/profile", (req, res) => {
+  return res.status(200).json(req.oidc.user);
+});
 
 app.listen(port, () => {
   LoggerService.info(`Server listening on port ${port}`);
