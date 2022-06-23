@@ -42,5 +42,5 @@ Apply pre-deployment security checks from the security checklist.
 | 109         | get                      |
 | 110         | add                      |
 | 111         | update                   |
-| 112         | addVersion               |
+| 112         | addVersions              |
 | 113         | deleteOne                |
